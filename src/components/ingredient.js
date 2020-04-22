@@ -60,6 +60,7 @@ class Ingredient extends React.Component {
     const { ingredientsList } = this.state;
     const { filters } = this.state;
     return (
+
       <div>
         <SearchBar 
         input={this.state.searchInputValue}
