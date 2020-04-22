@@ -25,15 +25,16 @@ class Ingredient extends React.Component {
   render() {
     const { ingredientsList } = this.state;
     return (
-      <div>
+      <div className="ingredients-container">
         <h1>Ingredients</h1>
-        {ingredientsList.map((ingredient) => (
-          <IngredientsList
-            key={ingredient.idIngredient}
-            name={ingredient.strIngredient}
-          />
-        ))}
-
+        <div className="ingredients-cards-container">
+          {ingredientsList.map((ingredient) => (
+            <IngredientsList
+              key={ingredient.idIngredient}
+              name={ingredient.strIngredient}
+            />
+          ))}
+        </div>
       </div>
     );
   }
