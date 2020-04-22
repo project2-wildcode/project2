@@ -52,11 +52,11 @@
   text-align: center;
 }
 
-.ingredients-cards-container{
+.ingredients-cards-container,
+.filters-container{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
-  padding:50px 0 ;
 }
 
 .card{
@@ -88,4 +88,49 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(182, 181, 181);
+}
+
+/******* FILTERS *******/
+
+.filters-wrapper{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(182, 181, 181);
+  width: 80px;
+  padding: 5px 8px;
+  margin: 30px 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.remove{
+  cursor: pointer;
+}
+
+/******* SEARCH BAR *******/
+
+.search-bar{
+  display: flex;
+  margin: 20px auto;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 300px;
+}
+
+.search-bar input{
+  width: 300px;
+  font-size: 1.1em;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.search{
+  position: absolute;
+  right: 10px;
 }

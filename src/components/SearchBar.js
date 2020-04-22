@@ -1,21 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { MdSearch } from 'react-icons/md';
 
-function SearchBar (props){
-    return(
-        <div>
-        <input 
-           placeholder={props.input}
-           value={props.input}
-           onChange={props.inputChangeHandler} />
-        
-        <button onClick={props.inputHandleSubmit}>Search</button>
-        
-        </div>
-    )
-
-    
+function SearchBar(props) {
+  const { input, handleChange } = props;
+  return (
+    <div className="search-bar">
+      <input
+        type="text"
+        placeholder="search ingredient"
+        value={input}
+        onChange={handleChange}
+      />
+      <MdSearch className="search" />
+    </div>
+  );
 }
 
-export default SearchBar
+SearchBar.propTypes = {
+  input: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
-//<button onClick={() => props.inputHandleSubmit(props.input)}>Search</button>
+export default SearchBar;
