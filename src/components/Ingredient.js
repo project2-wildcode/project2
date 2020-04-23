@@ -13,17 +13,19 @@ class Ingredient extends React.Component {
       ingredientsList: [],
       searchInputValue: '',
       filters: [],
-
     };
   }
 
-  componentDidMount() {
-    const url = 'https://www.themealdb.com/api/json/v1/1/list.php?i=ingredient';
+   componentDidMount() {
+    const url = "https://www.themealdb.com/api/json/v1/1/list.php?i=ingredient";
     axios
       .get(url)
       .then((response) => response.data.meals)
       .then((ingredientsData) => {
-        this.setState({ ingredientsList: ingredientsData, allIngredients: ingredientsData });
+        this.setState({
+          ingredientsList: ingredientsData,
+          allIngredients: ingredientsData,
+        });
       });
   }
 
@@ -55,11 +57,17 @@ class Ingredient extends React.Component {
     });
   }
 
+
   render() {
     const { ingredientsList, filters, searchInputValue } = this.state;
     return (
-
       <div className="ingredients-container">
+        <SearchBar
+          input={this.state.searchInputValue}
+          inputChangeHandler={this.handleChange}
+          inputHandleSubmit={this.handleSubmit}
+        />
+
         <h1>Ingredients</h1>
         <SearchBar
           input={searchInputValue}
