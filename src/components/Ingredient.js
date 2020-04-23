@@ -1,38 +1,22 @@
-import React from "react";
-import axios from "axios";
-import IngredientsList from "./IngredientsList";
-import Filters from "./Filters";
-import SearchBar from "./SearchBar";
-import { checkPropTypes } from "prop-types";
+import React from 'react';
+import axios from 'axios';
+import IngredientsList from './IngredientsList';
+import Filters from './Filters';
+import SearchBar from './SearchBar';
+
 
 class Ingredient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ingredientsList: [],
-      searchInputValue: "",
       allIngredients: [],
+      ingredientsList: [],
+      searchInputValue: '',
       filters: [],
     };
   }
 
-  addFilter = (name) => {
-    const currentFilters = [...this.state.filters];
-    let updatedFilters = currentFilters;
-    if (!currentFilters.includes(name)) {
-      updatedFilters = [name, ...currentFilters];
-    }
-    this.setState({ filters: updatedFilters });
-  };
-
-  removeFilter = (name) => {
-    console.log(name);
-    const filters = this.state.filters.filter((filter) => filter !== name);
-    this.setState({ filters });
-    console.log(filters);
-  };
-
-  componentDidMount() {
+   componentDidMount() {
     const url = "https://www.themealdb.com/api/json/v1/1/list.php?i=ingredient";
     axios
       .get(url)
@@ -44,27 +28,40 @@ class Ingredient extends React.Component {
         });
       });
   }
-  handleChange = (event) => {
-    this.setState({ searchInputValue: event.target.value });
+
+  addFilter = (name) => {
+    const { filters } = this.state;
+    const currentFilters = [...filters];
+    let updatedFilters = currentFilters;
+    if (!currentFilters.includes(name)) {
+      updatedFilters = [name, ...currentFilters];
+    }
+    this.setState({ filters: updatedFilters });
   };
 
-  handleSubmit = () => {
-    let inputValue = this.state.searchInputValue;
-    let ingredientsListVariable = this.state.allIngredients;
-    let findIngredients = ingredientsListVariable.filter((ingredient) => {
-      return ingredient.strIngredient
-        .toLowerCase()
-        .includes(inputValue.toLowerCase());
-    });
-    this.setState({ ingredientsList: findIngredients });
-    console.log("submit");
+  removeFilter = (name) => {
+    const { filters } = this.state;
+    const newFilters = filters.filter((filter) => filter !== name);
+    this.setState({ filters: newFilters });
   };
+
+  handleChange = (event) => {
+    const { value } = event.target;
+    const { allIngredients } = this.state;
+    const filteredIngredients = allIngredients.filter((ingredient) => {
+      return ingredient.strIngredient.toLowerCase().includes(value.toLowerCase());
+    });
+    this.setState({
+      searchInputValue: value,
+      ingredientsList: filteredIngredients,
+    });
+  }
+
 
   render() {
-    const { ingredientsList } = this.state;
-    const { filters } = this.state;
+    const { ingredientsList, filters, searchInputValue } = this.state;
     return (
-      <div>
+      <div className="ingredients-container">
         <SearchBar
           input={this.state.searchInputValue}
           inputChangeHandler={this.handleChange}
@@ -72,20 +69,28 @@ class Ingredient extends React.Component {
         />
 
         <h1>Ingredients</h1>
-        {filters.map((filter) => (
-          <Filters
-            name={filter}
-            removeFilter={this.removeFilter}
-            key={filter}
-          />
-        ))}
-        {ingredientsList.map((ingredient) => (
-          <IngredientsList
-            key={ingredient.idIngredient}
-            name={ingredient.strIngredient}
-            addFilter={this.addFilter}
-          />
-        ))}
+        <SearchBar
+          input={searchInputValue}
+          handleChange={this.handleChange}
+        />
+        <div className="filters-container">
+          {filters.map((filter) => (
+            <Filters
+              name={filter}
+              removeFilter={this.removeFilter}
+              key={filter}
+            />
+          ))}
+        </div>
+        <div className="ingredients-cards-container">
+          {ingredientsList.map((ingredient) => (
+            <IngredientsList
+              key={ingredient.idIngredient}
+              name={ingredient.strIngredient}
+              addFilter={this.addFilter}
+            />
+          ))}
+        </div>
       </div>
     );
   }
