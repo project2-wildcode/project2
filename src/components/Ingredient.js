@@ -2,19 +2,17 @@ import React from "react";
 import axios from "axios";
 import IngredientsList from "./IngredientsList";
 import Filters from "./Filters";
-import SearchBar from'./SearchBar';
+import SearchBar from "./SearchBar";
 import { checkPropTypes } from "prop-types";
-
 
 class Ingredient extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {  
+    this.state = {
       ingredientsList: [],
-      searchInputValue: '',
-      allIngredients: []
+      searchInputValue: "",
+      allIngredients: [],
       filters: [],
-
     };
   }
 
@@ -40,32 +38,37 @@ class Ingredient extends React.Component {
       .get(url)
       .then((response) => response.data.meals)
       .then((ingredientsData) => {
-        this.setState({ ingredientsList: ingredientsData, allIngredients: ingredientsData });
+        this.setState({
+          ingredientsList: ingredientsData,
+          allIngredients: ingredientsData,
+        });
       });
   }
- handleChange=(event)=>{
-   this.setState({searchInputValue:event.target.value})
- }
+  handleChange = (event) => {
+    this.setState({ searchInputValue: event.target.value });
+  };
 
- handleSubmit=()=>{
-   let inputValue=this.state.searchInputValue
- let ingredientsListVariable= this.state.allIngredients
- let findIngredients = ingredientsListVariable.filter(ingredient=> {
-   return ingredient.strIngredient.toLowerCase().includes(inputValue.toLowerCase())})
-   this.setState({ingredientsList:findIngredients})
-   console.log('submit');
- }
+  handleSubmit = () => {
+    let inputValue = this.state.searchInputValue;
+    let ingredientsListVariable = this.state.allIngredients;
+    let findIngredients = ingredientsListVariable.filter((ingredient) => {
+      return ingredient.strIngredient
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
+    });
+    this.setState({ ingredientsList: findIngredients });
+    console.log("submit");
+  };
 
   render() {
     const { ingredientsList } = this.state;
     const { filters } = this.state;
     return (
-
       <div>
-        <SearchBar 
-        input={this.state.searchInputValue}
-        inputChangeHandler={this.handleChange}
-        inputHandleSubmit={this.handleSubmit}
+        <SearchBar
+          input={this.state.searchInputValue}
+          inputChangeHandler={this.handleChange}
+          inputHandleSubmit={this.handleSubmit}
         />
 
         <h1>Ingredients</h1>
