@@ -62,12 +62,6 @@ class Ingredient extends React.Component {
     const { ingredientsList, filters, searchInputValue } = this.state;
     return (
       <div className="ingredients-container">
-        <SearchBar
-          input={this.state.searchInputValue}
-          inputChangeHandler={this.handleChange}
-          inputHandleSubmit={this.handleSubmit}
-        />
-
         <h1>Ingredients</h1>
         <SearchBar
           input={searchInputValue}
