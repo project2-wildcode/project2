@@ -1,9 +1,10 @@
-import React from 'react';
-import axios from 'axios';
-import IngredientsList from './IngredientsList';
-import Filters from './Filters';
-import SearchBar from './SearchBar';
-
+import React from "react";
+import axios from "axios";
+import IngredientsList from "./IngredientsList";
+import Filters from "./Filters";
+import SearchBar from "./SearchBar";
+import RecipesList from "./RecipesList";
+import { checkPropTypes } from "prop-types";
 
 class Ingredient extends React.Component {
   constructor(props) {
@@ -11,12 +12,13 @@ class Ingredient extends React.Component {
     this.state = {
       allIngredients: [],
       ingredientsList: [],
-      searchInputValue: '',
+      searchInputValue: "",
       filters: [],
+      recipesList: [],
     };
   }
 
-   componentDidMount() {
+  componentDidMount() {
     const url = "https://www.themealdb.com/api/json/v1/1/list.php?i=ingredient";
     axios
       .get(url)
@@ -37,36 +39,73 @@ class Ingredient extends React.Component {
       updatedFilters = [name, ...currentFilters];
     }
     this.setState({ filters: updatedFilters });
+    this.addRecipes(updatedFilters);
+  };
+
+  addRecipes = (filters) => {
+    let searchValue = null;
+
+    if (filters.length === 1) {
+      searchValue = filters[0].split(" ").join("_");
+    }
+
+    if (filters.length > 1) {
+      searchValue = filters
+        .map((filter) => filter.split(" ").join("_"))
+        .join(",");
+    }
+
+    let url = `https://www.themealdb.com/api/json/v2/9973533/filter.php?i=${searchValue}`;
+
+    axios
+      .get(url)
+      .then((response) => response.data.meals)
+      .then((recipesListData) => {
+        this.setState({ recipesList: recipesListData });
+      });
   };
 
   removeFilter = (name) => {
     const { filters } = this.state;
     const newFilters = filters.filter((filter) => filter !== name);
     this.setState({ filters: newFilters });
+    this.addRecipes(newFilters);
   };
 
   handleChange = (event) => {
     const { value } = event.target;
     const { allIngredients } = this.state;
     const filteredIngredients = allIngredients.filter((ingredient) => {
-      return ingredient.strIngredient.toLowerCase().includes(value.toLowerCase());
+      return ingredient.strIngredient
+        .toLowerCase()
+        .includes(value.toLowerCase());
     });
     this.setState({
       searchInputValue: value,
       ingredientsList: filteredIngredients,
     });
-  }
-
+  };
 
   render() {
-    const { ingredientsList, filters, searchInputValue } = this.state;
+    const {
+      ingredientsList,
+      filters,
+      searchInputValue,
+      recipesList,
+    } = this.state;
+
     return (
       <div className="ingredients-container">
         <h1>Ingredients</h1>
         <SearchBar
           input={searchInputValue}
           handleChange={this.handleChange}
+          addRecipes={this.addRecipes}
         />
+        <div>
+          {recipesList !== null &&
+            recipesList.map((recipe) => <RecipesList name={recipe.strMeal} />)}
+        </div>
         <div className="filters-container">
           {filters.map((filter) => (
             <Filters
