@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { MdSearch } from 'react-icons/md';
+import React from "react";
+import PropTypes from "prop-types";
+import { MdSearch } from "react-icons/md";
 
 function SearchBar(props) {
   const { input, handleChange } = props;
