@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MdSearch } from 'react-icons/md';
+//import { MdSearch } from 'react-icons/md';
 
 function SearchBar(props) {
-  const { input, handleChange } = props;
+  const { input, handleChange, handleFilterRecipes } = props;
   return (
     <div className="search-bar">
       <input
@@ -11,8 +11,9 @@ function SearchBar(props) {
         placeholder="search ingredient"
         value={input}
         onChange={handleChange}
+        onClick={handleFilterRecipes}
       />
-      <MdSearch className="search" />
+      
     </div>
   );
 }
@@ -23,3 +24,5 @@ SearchBar.propTypes = {
 };
 
 export default SearchBar;
+
+/*<MdSearch className="search" />*/
