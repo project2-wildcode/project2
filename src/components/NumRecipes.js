@@ -1,9 +1,6 @@
 import React from 'react';
 
 function NumRecipes(props) {
-	console.log(props.numRecipes);
-	// return <div>{props.numRecipes === null ? <div>No recipes found</div> : props.numRecipes}</div>;
-
 	switch (props.numRecipes) {
 		case 0:
 			return (
@@ -24,6 +21,7 @@ function NumRecipes(props) {
 				<div>
 					<div>
 						<b>{props.numRecipes} recipes found</b>
+						<button onClick={props.showButton}>{props.showRecipes ? 'Hide' : 'Show'}</button>
 					</div>
 					<br />
 				</div>

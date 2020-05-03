@@ -15,7 +15,8 @@ class Ingredient extends React.Component {
 			ingredientsList: [],
 			searchInputValue: '',
 			filters: [],
-			recipesList: []
+			recipesList: [],
+			showRecipes: false
 		};
 	}
 
@@ -77,6 +78,12 @@ class Ingredient extends React.Component {
 		});
 	};
 
+	handleClickShowRecipes = () => {
+		this.setState((prevState) => {
+			return { showRecipes: !prevState.showRecipes };
+		});
+	};
+
 	render() {
 		const { ingredientsList, filters, searchInputValue, recipesList } = this.state;
 
@@ -85,9 +92,18 @@ class Ingredient extends React.Component {
 				<h1>Ingredients</h1>
 				<SearchBar input={searchInputValue} handleChange={this.handleChange} addRecipes={this.addRecipes} />
 				<div>
-					<NumRecipes numRecipes={recipesList === null ? null : recipesList.length} />
+					<NumRecipes
+						numRecipes={recipesList === null ? null : recipesList.length}
+						showButton={this.handleClickShowRecipes}
+						showRecipes={this.state.showRecipes}
+					/>
 				</div>
-				<div>{recipesList !== null && recipesList.map((recipe) => <RecipesList name={recipe.strMeal} />)}</div>
+				<div>
+					{recipesList !== null &&
+						recipesList.map((recipe) => (
+							<RecipesList showRecipes={this.state.showRecipes} name={recipe.strMeal} />
+						))}
+				</div>
 				<div className="filters-container">
 					{filters.map((filter) => <Filters name={filter} removeFilter={this.removeFilter} key={filter} />)}
 				</div>
