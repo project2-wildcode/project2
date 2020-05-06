@@ -4,6 +4,7 @@ import { TiDelete } from 'react-icons/ti';
 
 function Filters(props) {
   const { name, removeFilter } = props;
+
   return (
     <div className="filters-wrapper">
       <div>{name}</div>
