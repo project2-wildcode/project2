@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 function NumRecipes(props) {
 	switch (props.numRecipes) {
@@ -21,7 +22,9 @@ function NumRecipes(props) {
 				<div>
 					<div>
 						<b>{props.numRecipes} recipes found</b>
-						<button onClick={props.showButton}>{props.showRecipes ? 'Hide' : 'Show'}</button>
+						<div onClick={props.showButton}>
+							{props.showRecipes ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
+						</div>
 					</div>
 					<br />
 				</div>
