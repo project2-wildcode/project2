@@ -84,6 +84,18 @@ class Ingredient extends React.Component {
 		});
 	};
 
+	selectRecipe = (name) => {
+		console.log(name)
+		const searchValue = name.split(' ').join('_');
+		const { history } = this.props;
+		history.push({
+		  pathname: '/recipe',
+		  state: {
+			recipeName: searchValue
+		  }
+		});
+	  }
+
 	render() {
 		const { ingredientsList, filters, searchInputValue, recipesList } = this.state;
 
@@ -101,7 +113,7 @@ class Ingredient extends React.Component {
 				<div>
 					{recipesList !== null &&
 						recipesList.map((recipe) => (
-							<RecipesList showRecipes={this.state.showRecipes} name={recipe.strMeal} />
+							<RecipesList showRecipes={this.state.showRecipes} selectRecipe={this.selectRecipe} name={recipe.strMeal} />
 						))}
 				</div>
 				<div className="filters-container">
