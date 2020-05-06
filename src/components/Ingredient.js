@@ -16,7 +16,9 @@ class Ingredient extends React.Component {
 			searchInputValue: '',
 			filters: [],
 			recipesList: [],
-			showRecipes: false
+			showRecipes: false,
+			allRecipes: [],
+			recipesList: []
 		};
 	}
 
@@ -84,8 +86,20 @@ class Ingredient extends React.Component {
 		});
 	};
 
+	handleChangeRecipes = (event) => {
+		const value = event.target.value;
+		const allRecipes = this.state.allRecipes;
+		const filteredRecipes = allRecipes.filter((recipe) => {
+			return recipe.strMeal.toLowerCase().includes(value.toLowerCase());
+		});
+		this.setState({
+			searchInputValue: value,
+			RecipesList: filteredRecipes
+		});
+	};
+
 	render() {
-		const { ingredientsList, filters, searchInputValue, recipesList } = this.state;
+		const { ingredientsList, filters, searchInputValue, recipesList, inputRecipes } = this.state;
 
 		return (
 			<div className="ingredients-container">
@@ -115,6 +129,7 @@ class Ingredient extends React.Component {
 							addFilter={this.addFilter}
 						/>
 					))}
+					<SearchBar input={searchInputValue} handleChange={this.handleChangeRecipes} />
 				</div>
 			</div>
 		);
