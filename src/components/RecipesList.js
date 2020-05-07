@@ -1,12 +1,23 @@
-import React from 'react';
 
-function RecipesList(props) {
-	return (
-		<div>
-			<div>{props.recipesFoundName}</div>
-			<img src={props.recipesFoundPic} alt={props.recipesFoundPic} />
-		</div>
-	);
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
+function RecipeList(props) {
+  const {
+    showRecipes,
+    name,
+    selectRecipe,
+    rating,
+    time,
+    level,
+    people,
+  } = props;
+  return (
+    <div onClick={() => selectRecipe(name, rating, time, level, people)}>
+      <Link to="/recipe">{showRecipes ? name : ""}</Link>
+    </div>
+  );
 }
 
 export default RecipesList;

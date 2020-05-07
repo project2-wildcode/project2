@@ -9,6 +9,7 @@ import Recipes from './components/Recipes';
 import Ingredient from './components/Ingredient';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Recipe from './components/Recipe'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/ingredients" component={Ingredient} />
           <Route path="/recipes" component={Recipes} />
+          <Route path="/recipe" component={Recipe} />
         </Switch>
       </Router>
     </div>
