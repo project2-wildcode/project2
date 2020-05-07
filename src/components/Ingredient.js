@@ -16,6 +16,7 @@ function randomNum(num) {
 }
 
 class Ingredient extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
