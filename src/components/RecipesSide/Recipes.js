@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import SearchBar from '../SharedComponents/SearchBar';
 import axios from 'axios';
-import RecipesList from './RecipesList';
+import RecipesList from '../SharedComponents/RecipesList';
 
 class Recipes extends React.Component {
 	constructor(props) {

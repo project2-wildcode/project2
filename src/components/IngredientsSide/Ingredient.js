@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import IngredientsList from "./IngredientsList";
 import Filters from "./Filters";
-import SearchBar from "./SearchBar";
-import RecipesList from "./RecipesList";
+import SearchBar from "../SharedComponents/SearchBar";
+import RecipesList from "../SharedComponents/RecipesList";
 import NumRecipes from "./NumRecipes";
 
 const Arrrating = [1, 2, 3, 4, 5];
