@@ -74,6 +74,8 @@ class Ingredient extends React.Component {
 		const filteredIngredients = allIngredients.filter((ingredient) => {
 			return ingredient.strIngredient.toLowerCase().includes(value.toLowerCase());
 		});
+		console.log(filteredIngredients);
+
 		this.setState({
 			searchInputValue: value,
 			ingredientsList: filteredIngredients
@@ -86,25 +88,18 @@ class Ingredient extends React.Component {
 		});
 	};
 
-	handleChangeRecipes = (event) => {
-		const value = event.target.value;
-		const allRecipes = this.state.allRecipes;
-		const filteredRecipes = allRecipes.filter((recipe) => {
-			return recipe.strMeal.toLowerCase().includes(value.toLowerCase());
-		});
-		this.setState({
-			searchInputValue: value,
-			RecipesList: filteredRecipes
-		});
-	};
-
 	render() {
-		const { ingredientsList, filters, searchInputValue, recipesList, inputRecipes } = this.state;
+		const { ingredientsList, filters, searchInputValue, recipesList } = this.state;
 
 		return (
 			<div className="ingredients-container">
 				<h1>Ingredients</h1>
-				<SearchBar input={searchInputValue} handleChange={this.handleChange} addRecipes={this.addRecipes} />
+				<SearchBar
+					input={searchInputValue}
+					handleChange={this.handleChange}
+					addRecipes={this.addRecipes}
+					placeholder={'ingredients'}
+				/>
 				<div>
 					<NumRecipes
 						numRecipes={recipesList === null ? null : recipesList.length}
@@ -129,7 +124,6 @@ class Ingredient extends React.Component {
 							addFilter={this.addFilter}
 						/>
 					))}
-					<SearchBar input={searchInputValue} handleChange={this.handleChangeRecipes} />
 				</div>
 			</div>
 		);

@@ -1,8 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function RecipeList(props) {
-	return <div>{props.showRecipes ? props.name : ''}</div>;
+function RecipesList(props) {
+	return (
+		<div>
+			<div>{props.recipesFoundName}</div>
+			<img src={props.recipesFoundPic} alt={props.recipesFoundPic} />
+		</div>
+	);
 }
 
-export default RecipeList;
+export default RecipesList;
