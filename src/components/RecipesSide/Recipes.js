@@ -1,13 +1,13 @@
-import React from "react";
-import SearchBar from "../SharedComponents/SearchBar";
-import axios from "axios";
-import RecipesList from "../SharedComponents/RecipesList";
-import CategoriesList from "../RecipesSide/categoriesList";
-import SortBy from "../SharedComponents/SortBy";
+import React from 'react';
+import axios from 'axios';
+import SearchBar from '../SharedComponents/SearchBar';
+import RecipesList from '../SharedComponents/RecipesList';
+import CategoriesList from './categoriesList';
+import SortBy from '../SharedComponents/SortBy';
 
 const rating = [1, 2, 3, 4, 5];
 const time = [30, 45, 60, 90];
-const level = ["Easy", "Medium", "Hard"];
+const level = ['Easy', 'Medium', 'Hard'];
 const people = [1, 2, 3, 4];
 
 function randomNum(num) {
@@ -15,19 +15,18 @@ function randomNum(num) {
 }
 
 class Recipes extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      recipesAPI: "",
-      searchInputRecipes: "",
-      recipesFound: [],
+      recipesList: [],
       categories: [],
+      chosenCategory: '',
+      searchValue: '',
     };
   }
 
   componentDidMount() {
-    const url = "https://www.themealdb.com/api/json/v2/9973533/categories.php";
+    const url = 'https://www.themealdb.com/api/json/v2/9973533/categories.php';
     axios
       .get(url)
       .then((response) => response.data.categories)
@@ -55,110 +54,126 @@ class Recipes extends React.Component {
           return recipeB.rating - recipeA.rating;
         });
         this.setState({
-          recipesFound: sortedList,
+          recipesList: sortedList,
+          chosenCategory: name
         });
-        console.log(updatedRecipesList);
       });
   };
 
   handleChangeRecipes = (event) => {
-		const value = event.target.value;
-		const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
-		if (value.length > 0) {
-			axios.get(url).then((response) => response.data.meals).then((recipesData) => {
-				if (recipesData === null) {
-					this.setState({ recipesFound: [], searchInputRecipes: value });
-				} else {
-					const updatedRecipesList = recipesData.map((recipe) => {
-						const extraInfo = {
-							rating: rating[randomNum(5)],
-							time: time[randomNum(4)],
-							level: level[randomNum(3)],
-							people: people[randomNum(4)]
-						};
-						return { ...recipe, ...extraInfo };
-					});
-					this.setState({ recipesFound: updatedRecipesList, searchInputRecipes: value });
-				}
-			});
-		}
-	};
+	  const { value } = event.target;
+	  const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${value}`;
+	  if (value.length > 0) {
+      axios
+        .get(url)
+        .then((response) => response.data.meals)
+        .then((recipesData) => {
+	  		if (recipesData === null) {
+			  	this.setState({
+              recipesList: [],
+              searchValue: value,
+            });
+			  	} else {
+					  const updatedRecipesList = recipesData.map((recipe) => {
+				  		const extraInfo = {
+					  		rating: rating[randomNum(5)],
+					  		time: time[randomNum(4)],
+					  		level: level[randomNum(3)],
+					  		people: people[randomNum(4)],
+			  			};
+				  		return { ...recipe, ...extraInfo };
+				  	});
+			  		this.setState({
+              recipesList: updatedRecipesList,
+              searchValue: value,
+            });
+		  		}
+		  	});
+	  	} else { /* added */
+      this.setState({
+        searchValue: value,
+        recipesList: [],
+      });
+    }
+  };
 
   selectRecipe = (
     name,
     recipeRating,
     recipeTime,
     recipeLevel,
-    recipePeople
+    recipePeople,
   ) => {
-    console.log(name);
-    const searchValue = name.split(" ").join("_");
+    const searchValue = name.split(' ').join('_');
     const { history } = this.props;
     history.push({
-      pathname: "/recipe",
+      pathname: '/recipe',
       state: {
-        recipeName: searchValue,
+        name: searchValue,
         rating: recipeRating,
         time: recipeTime,
         level: recipeLevel,
         people: recipePeople,
-        from: "ingredients",
+        from: 'ingredients',
       },
     });
   };
 
   handleSortByChange = (event) => {
     const { value } = event.target;
-    const { recipesFound } = this.state;
+    const { recipesList } = this.state;
 
-    if (value === "time") {
-      const sortedList = recipesFound.sort((recipeA, recipeB) => {
+    if (value === 'time') {
+      const sortedList = recipesList.sort((recipeA, recipeB) => {
         return recipeA.time - recipeB.time;
       });
-      this.setState({ recipesFound: sortedList });
+      this.setState({ recipesList: sortedList });
     } else {
-      const sortedList = recipesFound.sort((recipeA, recipeB) => {
+      const sortedList = recipesList.sort((recipeA, recipeB) => {
         return recipeB.rating - recipeA.rating;
       });
-      this.setState({ recipesFound: sortedList });
+      this.setState({ recipesList: sortedList });
     }
   };
 
   render() {
+    const { categories, recipesList, searchValue } = this.state;
     return (
-      <div>
-        <div>
+      <div className="page-wrapper">
+        <div className="recipes-container-left">
+          <h1 className="recipes-title">Recipes</h1>
           <SearchBar
-            input={this.state.searchInputRecipes}
+            input={searchValue}
             handleChange={this.handleChangeRecipes}
-            placeholder={"recipes"}
+            placeholder="recipes"
           />
+          <div className="categories-cards-container">
+            {categories.map((category) => (
+              <CategoriesList
+                key={category.idCategory}
+                name={category.strCategory}
+                thumbnail={category.strCategoryThumb}
+                getRecipesByCat={this.getRecipesByCat}
+              />
+            ))}
+          </div>
         </div>
-        <div>
-          {this.state.categories.map((category) => (
-            <CategoriesList
-              key={category.idCategory}
-              name={category.strCategory}
-              thumbnail={category.strCategoryThumb}
-              getRecipesByCat={this.getRecipesByCat}
-            />
-          ))}
-        </div>
-        <SortBy handleSortByChange={this.handleSortByChange} />
-        <div>
-          {this.state.recipesFound !== null
-            ? this.state.recipesFound.map((recipeData) => (
-                <RecipesList
-                  name={recipeData.strMeal}
-                  thumbnail={recipeData.strMealThumb}
-                  key={recipeData.idMeal}
-                  rating={recipeData.rating}
-                  time={recipeData.time}
-                  level={recipeData.level}
-                  people={recipeData.people}
-                />
-              ))
-            : "No recipes found"}
+        <div className="recipes-container-right">
+          <SortBy handleSortByChange={this.handleSortByChange} />
+          <div className="recipes-list-container">
+            {recipesList !== null ? recipesList.map((recipeData) => (
+              <RecipesList
+                key={recipeData.idMeal}
+                name={recipeData.strMeal}
+                thumbnail={recipeData.strMealThumb}
+                rating={recipeData.rating}
+                time={recipeData.time}
+                level={recipeData.level}
+                people={recipeData.people}
+              />
+            ))
+              : 'No recipes found'}
+          </div>
         </div>
       </div>
     );
