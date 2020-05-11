@@ -1,7 +1,7 @@
 import React from 'react';
-import HomeOpening from './Homesubcomponents/HomeOpening';
-import HomeIngredients from './Homesubcomponents/HomeIngredients';
-import HomeRecipes from './Homesubcomponents/HomeRecipes';
+import HomeOpening from './HomeSubcomponents/HomeOpening';
+import HomeIngredients from './HomeSubcomponents/HomeIngredients';
+import HomeRecipes from './HomeSubcomponents/HomeRecipes';
 
 function Home() {
   

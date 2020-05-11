@@ -2,7 +2,8 @@ import React from 'react';
 //import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
 function NumRecipes(props) {
-  switch (props.numRecipes) {
+	const { numRecipes } = props
+  switch (numRecipes) {
 	case 0:
 	  return (
 	    <div className="num-of-recipes-wrapper">
@@ -18,7 +19,7 @@ function NumRecipes(props) {
 	default:
 	  return (
 		<div className="num-of-recipes-wrapper">
-		  <p className="num-of-recipes-info"><span>{numOfRecipes}</span> {numOfRecipes === 1 ? 'recipe': 'recipes'} avalible</p>
+		  <p className="num-of-recipes-info"><span>{numRecipes}</span> {numRecipes === 1 ? 'recipe': 'recipes'} avalible</p>
 	    </div>
 	  );
 	}
