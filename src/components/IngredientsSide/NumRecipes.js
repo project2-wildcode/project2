@@ -1,35 +1,26 @@
 import React from 'react';
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
+//import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
 function NumRecipes(props) {
-	switch (props.numRecipes) {
-		case 0:
-			return (
-				<div>
-					<b>Please choose your ingredients</b>
-				</div>
-			);
-			break;
-		case null:
-			return (
-				<div>
-					<b>No recipes found</b>
-				</div>
-			);
-			break;
-		default:
-			return (
-				<div>
-					<div>
-						<b>{props.numRecipes} recipes found</b>
-						<div onClick={props.showButton}>
-							{props.showRecipes ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
-						</div>
-					</div>
-					<br />
-				</div>
-			);
-			break;
+  switch (props.numRecipes) {
+	case 0:
+	  return (
+	    <div className="num-of-recipes-wrapper">
+          <p className="num-of-recipes-info">click the cards to add <span>ingredients</span></p>
+        </div>
+	  );
+	case null:
+	  return (
+		<div className="num-of-recipes-wrapper">
+          <p className="num-of-recipes-info">sorry, no recipes avalible.<br/> <span>try other ingredients</span></p>
+        </div>
+	  );
+	default:
+	  return (
+		<div className="num-of-recipes-wrapper">
+		  <p className="num-of-recipes-info"><span>{numOfRecipes}</span> {numOfRecipes === 1 ? 'recipe': 'recipes'} avalible</p>
+	    </div>
+	  );
 	}
 }
 

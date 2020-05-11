@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 
 function IngredientsList(props) {
   const { name, addFilter } = props;
+
+  const searchUrl = name.split(' ').join('%20');
+  
   return (
-    <div className="card" onClick={() => addFilter(name)}>
+    <div className="ingredients-card" onClick={() => addFilter(name)}>
       <img
-        src={`https://www.themealdb.com/images/ingredients/${name}-small.png`}
+        src={`https://www.themealdb.com/images/ingredients/${searchUrl}-small.png`}
         alt={name}
       />
-      <div className="title">
+      <div className="ingredients-card-title">
         <p>{name}</p>
       </div>
     </div>
