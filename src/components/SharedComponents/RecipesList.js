@@ -10,7 +10,9 @@ function RecipesList(props) {
 				<Link to="/recipe">{showRecipes ? name : ''}</Link>
 			</div>
 			<div>
-				<p>Recipe:{name}</p>
+				<p>
+					{console.log(name)}Recipe:{name}
+				</p>
 				<img src={pic} alt={pic} />
 				<p>Rating:{rating}</p>
 				<p>Preparation time:{time} minutes</p>

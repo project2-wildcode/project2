@@ -18,29 +18,34 @@ class Recipes extends React.Component {
 		this.state = {
 			recipesAPI: '',
 			searchInputRecipes: '',
-			recipesFound: []
+			recipesData: []
 		};
 	}
 
 	handleChangeRecipes = (event) => {
 		const value = event.target.value;
 		const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
-		axios.get(url).then((response) => response.data.meals).then((recipesData) => {
-			const updatedRecipeList = recipesData.map((recipe) => {
-				const extraInfo = {
-					rating: Arrrating[randomNum(5)],
-					time: Arrtime[randomNum(4)],
-					level: Arrlevel[randomNum(3)],
-					people: Arrpeople[randomNum(4)]
-				};
-				return { ...recipe, ...extraInfo };
+		if (value.length > 0) {
+			axios.get(url).then((response) => response.data.meals).then((recipesData) => {
+				if (recipesData === null) {
+					this.setState({ recipesData: [], searchInputRecipes: value });
+				} else {
+					const updatedRecipesList = recipesData.map((recipe) => {
+						const extraInfo = {
+							rating: Arrrating[randomNum(5)],
+							time: Arrtime[randomNum(4)],
+							level: Arrlevel[randomNum(3)],
+							people: Arrpeople[randomNum(4)]
+						};
+						return { ...recipe, ...extraInfo };
+					});
+					this.setState({ recipesData: updatedRecipesList, searchInputRecipes: value });
+				}
 			});
-			this.setState({ recipesFound: updatedRecipeList, searchInputRecipes: value });
-		});
+		}
 	};
 
 	render() {
-		console.log(this.state.recipesFound);
 		return (
 			<div>
 				<div>
@@ -51,21 +56,37 @@ class Recipes extends React.Component {
 					/>
 				</div>
 				<div>
-					{this.state.recipesFound !== null ? (
-						this.state.recipesFound.map((recipeFound) => (
+					{this.state.recipesData.length === 0 ? (
+						<div>No recipes found</div>
+					) : (
+						this.state.recipesData.map((recipeData) => (
 							<RecipesList
-								name={recipeFound.strMeal}
-								pic={recipeFound.strMealThumb}
-								rating={recipeFound.rating}
-								time={recipeFound.time}
-								level={recipeFound.level}
-								people={recipeFound.people}
+								name={recipeData.strMeal}
+								pic={recipeData.strMealThumb}
+								rating={recipeData.rating}
+								time={recipeData.time}
+								level={recipeData.level}
+								people={recipeData.people}
+							/>
+						))
+					)}
+				</div>
+				{/* <div>
+					{this.state.recipesData !== [] ? (
+						this.state.recipesData.map((recipeData) => (
+							<RecipesList
+								name={recipeData.strMeal}
+								pic={recipeData.strMealThumb}
+								rating={recipeData.rating}
+								time={recipeData.time}
+								level={recipeData.level}
+								people={recipeData.people}
 							/>
 						))
 					) : (
-						'No recipes found'
+						<div>No recipes found</div>
 					)}
-				</div>
+				</div> */}
 			</div>
 		);
 	}
