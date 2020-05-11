@@ -3,6 +3,7 @@ import SearchBar from "../SharedComponents/SearchBar";
 import axios from "axios";
 import RecipesList from "../SharedComponents/RecipesList";
 import CategoriesList from "../RecipesSide/categoriesList";
+import SortBy from "../SharedComponents/SortBy";
 
 const rating = [1, 2, 3, 4, 5];
 const time = [30, 45, 60, 90];
@@ -49,8 +50,11 @@ class Recipes extends React.Component {
           };
           return { ...recipe, ...extraInfo };
         });
+        const sortedList = updatedRecipesList.sort((recipeA, recipeB) => {
+          return recipeB.rating - recipeA.rating;
+        });
         this.setState({
-          recipesFound: updatedRecipesList,
+          recipesFound: sortedList,
         });
         console.log(updatedRecipesList);
       });
@@ -93,6 +97,23 @@ class Recipes extends React.Component {
     });
   };
 
+  handleSortByChange = (event) => {
+    const { value } = event.target;
+    const { recipesFound } = this.state;
+
+    if (value === "time") {
+      const sortedList = recipesFound.sort((recipeA, recipeB) => {
+        return recipeA.time - recipeB.time;
+      });
+      this.setState({ recipesFound: sortedList });
+    } else {
+      const sortedList = recipesFound.sort((recipeA, recipeB) => {
+        return recipeB.rating - recipeA.rating;
+      });
+      this.setState({ recipesFound: sortedList });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -113,12 +134,13 @@ class Recipes extends React.Component {
             />
           ))}
         </div>
+        <SortBy handleSortByChange={this.handleSortByChange} />
         <div>
           {this.state.recipesFound !== null
             ? this.state.recipesFound.map((recipeData) => (
                 <RecipesList
-                  recipesFoundName={recipeData.strMeal}
-                  recipesFoundPic={recipeData.strMealThumb}
+                  name={recipeData.strMeal}
+                  thumbnail={recipeData.strMealThumb}
                   key={recipeData.idMeal}
                   rating={recipeData.rating}
                   time={recipeData.time}
