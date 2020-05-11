@@ -71,10 +71,10 @@ class Recipes extends React.Component {
 				} else {
 					const updatedRecipesList = recipesData.map((recipe) => {
 						const extraInfo = {
-							rating: Arrrating[randomNum(5)],
-							time: Arrtime[randomNum(4)],
-							level: Arrlevel[randomNum(3)],
-							people: Arrpeople[randomNum(4)]
+							rating: rating[randomNum(5)],
+							time: time[randomNum(4)],
+							level: level[randomNum(3)],
+							people: people[randomNum(4)]
 						};
 						return { ...recipe, ...extraInfo };
 					});
