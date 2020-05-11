@@ -1,26 +1,45 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import StarRatings from "react-star-ratings";
+import { GiCookingPot } from "react-icons/gi";
+import { MdPeople } from "react-icons/md";
+import { AiFillClockCircle } from "react-icons/ai";
 
 function RecipesList(props) {
-	const { showRecipes, name, selectRecipe, rating, time, level, people, pic } = props;
-	return (
-		<div>
-			<div onClick={() => selectRecipe(name, rating, time, level, people)}>
-				<Link to="/recipe">{showRecipes ? name : ''}</Link>
-			</div>
-			<div>
-				<p>
-					{console.log(name)}Recipe:{name}
-				</p>
-				<img src={pic} alt={pic} />
-				<p>Rating:{rating}</p>
-				<p>Preparation time:{time} minutes</p>
-				<p>Dificulty:{level}</p>
-				<p>number of people:{people}</p>
-			</div>
-		</div>
-	);
+  const { name, selectRecipe, rating, time, level, people, thumbnail } = props;
+  return (
+    <div
+      className="recipes-list-card"
+      onClick={() => selectRecipe(name, rating, time, level, people)}
+    >
+      <Link to="/recipe">
+        <img src={thumbnail} alt={name} />
+        <div className="card-info">
+          <h2>{name}</h2>
+          <StarRatings
+            rating={rating}
+            starRatedColor="blue"
+            numberOfStars={5}
+          />
+          <div className="extra-info">
+            <div className="extra-info-wrapper">
+              <AiFillClockCircle className="icon" />
+              <p>{time}</p>
+            </div>
+            <div className="extra-info-wrapper">
+              <MdPeople className="icon" />
+              <p>{people}</p>
+            </div>
+            <div className="extra-info-wrapper">
+              <GiCookingPot className="icon" />
+              <p>{level}</p>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
 }
 
 export default RecipesList;

@@ -9,21 +9,24 @@ class Recipe extends Component {
 			recipeInfo: []
 		};
 	}
-
-	componentDidMount() {
-		const { recipeName, rating, time, level, people } = this.props.location.state;
-		const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${recipeName}`;
-		axios.get(url).then((response) => response.data.meals[0]).then((recipeData) => {
-			const newInfo = {
-				recipeRating: rating,
-				perpTime: time,
-				difficulty: level,
-				numOfPeople: people
-			};
-			const recipeUpdatedData = { ...recipeData, ...newInfo };
-			this.setState({ recipeInfo: recipeUpdatedData });
-		});
-	}
+  
+  componentDidMount() {
+    const { name, rating, time, level, people } = this.props.location.state;
+    const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${name}`;
+    axios
+      .get(url)
+      .then((response) => response.data.meals[0])
+      .then((recipeData) => {
+        const newInfo = {
+          recipeRating: rating,
+          perpTime: time,
+          difficulty: level,
+          numOfPeople: people,
+        };
+        const recipeUpdatedData = { ...recipeData, ...newInfo };
+        this.setState({ recipeInfo: recipeUpdatedData });
+      });
+  }
 
 	filteredIngredient = () => {
 		let ingredients = [];

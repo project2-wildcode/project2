@@ -7,7 +7,7 @@ function Filters(props) {
 
   return (
     <div className="filters-wrapper">
-      <div>{name}</div>
+      <div className="filter-name">{name}</div>
       <TiDelete className="remove" onClick={() => removeFilter(name)} />
     </div>
   );
