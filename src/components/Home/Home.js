@@ -4,18 +4,15 @@ import HomeIngredients from './HomeSubcomponents/HomeIngredients';
 import HomeRecipes from './HomeSubcomponents/HomeRecipes';
 
 function Home() {
-  
-  
-    return(
-      <div className='home-wrapper'>
-        <div className='page-wrapper'>
-            <HomeOpening />
-            <HomeIngredients />
-            <HomeRecipes />
+  return (
+    <div className="home-wrapper">
+      <div className="page-wrapper">
+        <HomeOpening />
+        <HomeIngredients />
+        <HomeRecipes />
       </div>
-      </div>
-      
-    )
+    </div>
+  );
 }
 
 export default Home;
