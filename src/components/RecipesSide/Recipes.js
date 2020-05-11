@@ -15,6 +15,7 @@ function randomNum(num) {
 }
 
 class Recipes extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -61,18 +62,27 @@ class Recipes extends React.Component {
   };
 
   handleChangeRecipes = (event) => {
-    const value = event.target.value;
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
-    axios
-      .get(url)
-      .then((response) => response.data.meals)
-      .then((recipesData) => {
-        this.setState({
-          recipesFound: recipesData,
-          searchInputRecipes: value,
-        });
-      });
-  };
+		const value = event.target.value;
+		const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
+		if (value.length > 0) {
+			axios.get(url).then((response) => response.data.meals).then((recipesData) => {
+				if (recipesData === null) {
+					this.setState({ recipesFound: [], searchInputRecipes: value });
+				} else {
+					const updatedRecipesList = recipesData.map((recipe) => {
+						const extraInfo = {
+							rating: Arrrating[randomNum(5)],
+							time: Arrtime[randomNum(4)],
+							level: Arrlevel[randomNum(3)],
+							people: Arrpeople[randomNum(4)]
+						};
+						return { ...recipe, ...extraInfo };
+					});
+					this.setState({ recipesFound: updatedRecipesList, searchInputRecipes: value });
+				}
+			});
+		}
+	};
 
   selectRecipe = (
     name,
