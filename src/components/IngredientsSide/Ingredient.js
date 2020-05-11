@@ -148,7 +148,7 @@ class Ingredient extends Component {
           <SearchBar
             input={searchValue}
             handleChange={this.handleChange}
-            addRecipes={this.addRecipes}
+            placeholder='ingredients'
           />
           <div className="filters-container">
             {filters.map((filter) => (
@@ -173,22 +173,20 @@ class Ingredient extends Component {
         <div className="ingredients-container-right">
           <NumRecipes
             numRecipes={recipesList === null ? null : recipesList.length}
-            showButton={this.handleClickShowRecipes}
-            showRecipes={this.state.showRecipes}
           />
-        
+          {/* SortBy Comes Here */}
           <div className='recipes-list-container'>
             {recipesList !== null &&
               recipesList.map((recipe) => (
                 <RecipesList
-                  showRecipes={this.state.showRecipes}
-                  selectRecipe={this.selectRecipe}
-                  name={recipe.strMeal}
                   key={recipe.idMeal}
+                  name={recipe.strMeal}
+                  thumbnail={recipe.srtMealThumb}
                   rating={recipe.rating}
                   time={recipe.time}
                   level={recipe.level}
                   people={recipe.people}
+                  selectRecipe={this.selectRecipe}
                 />
             ))}
           </div>
