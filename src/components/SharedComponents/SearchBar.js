@@ -14,6 +14,7 @@ function SearchBar(props) {
 
 SearchBar.propTypes = {
 	input: PropTypes.string.isRequired,
+	placeholder: PropTypes.string.isRequired,
 	handleChange: PropTypes.func.isRequired
 };
 
