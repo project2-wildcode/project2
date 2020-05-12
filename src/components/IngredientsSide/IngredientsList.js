@@ -1,13 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 function IngredientsList(props) {
   const { name, addFilter } = props;
 
   const searchUrl = name.split(' ').join('%20');
-  
+
   return (
-    <div className="ingredients-card" onClick={() => addFilter(name)}>
+    <div
+      className="ingredients-card"
+      onClick={() => addFilter(name)}
+      role="button"
+      tabIndex="0"
+    >
       <img
         src={`https://www.themealdb.com/images/ingredients/${searchUrl}-small.png`}
         alt={name}
