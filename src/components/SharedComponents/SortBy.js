@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function SortBy(props) {
   const { handleSortByChange } = props;
@@ -17,4 +18,7 @@ function SortBy(props) {
   );
 }
 
+SortBy.propTypes = {
+  handleSortByChange: PropTypes.func.isRequired,
+};
 export default SortBy;
