@@ -6,6 +6,7 @@ import SearchBar from "../SharedComponents/SearchBar";
 import RecipesList from "../SharedComponents/RecipesList";
 import NumRecipes from "./NumRecipes";
 import SortBy from "../SharedComponents/SortBy";
+import "./Ingredient.scss";
 
 const ratingArr = [1, 2, 3, 4, 5];
 const timeArr = [30, 45, 60, 90];

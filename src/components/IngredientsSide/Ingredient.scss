@@ -1,0 +1,58 @@
+@import "../styles/variables.scss";
+
+.page-wrapper{
+  display: flex;
+}
+
+.ingredients-left-container {
+    @include half-page-container(white);
+}
+
+.filters-container{
+    @include cards-container;
+
+    .filters-wrapper{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: $yellow;
+        width: fit-content;
+        height: 25px;
+        padding: 7px 10px;
+        margin: 30px 15px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 $shadow;
+
+        p{
+            font-family: Jost-semiBold;
+            font-size: 18px;
+            margin-right: 5px;
+            color: white;
+        }
+
+        .remove{
+            color: white;
+            font-size: 20px;
+        }
+    }
+}
+
+.ingredients-cards-container{
+    @include cards-container;
+
+    .ingredients-card{
+        @include card;
+
+        img{ @include card-img; }
+
+        .ingredients-card-title{
+            @include card-title;
+
+            p{ @include card-p; }
+        }
+    }
+}
+
+.ingredients-container-right{
+    @include half-page-container($yellow);
+}
