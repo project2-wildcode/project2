@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function SortBy(props) {
   const { handleSortByChange } = props;
   return (
     <div>
-      <label for="filter">Sort by:</label>
+      <label htmlFor="filter">Sort by:</label>
       <select onChange={handleSortByChange} id="filter">
         <option key="rating" value="rating">
           Top rated
@@ -17,4 +18,7 @@ function SortBy(props) {
   );
 }
 
+SortBy.propTypes = {
+  handleSortByChange: PropTypes.func.isRequired,
+};
 export default SortBy;
