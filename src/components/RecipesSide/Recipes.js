@@ -73,20 +73,20 @@ class Recipes extends React.Component {
               recipesList: [],
               searchValue: value,
             });
-			  	} else {
-					  const updatedRecipesList = recipesData.map((recipe) => {
-				  		const extraInfo = {
-					  		rating: rating[randomNum(5)],
-					  		time: time[randomNum(4)],
-					  		level: level[randomNum(3)],
-					  		people: people[randomNum(4)],
-			  			};
-				  		return { ...recipe, ...extraInfo };
+          } else {
+            const updatedRecipesList = recipesData.map((recipe) => {
+              const extraInfo = {
+                rating: rating[randomNum(5)],
+                time: time[randomNum(4)],
+                level: level[randomNum(3)],
+                people: people[randomNum(4)],
+              };
+              return { ...recipe, ...extraInfo };
             });
             const sortedList = updatedRecipesList.sort((recipeA, recipeB) => {
               return recipeB.rating - recipeA.rating;
             });
-			  		this.setState({
+            this.setState({
               recipesList: sortedList,
               searchValue: value,
             });
@@ -163,21 +163,23 @@ class Recipes extends React.Component {
           </div>
         </div>
         <div className="recipes-container-right">
-          
           <SortBy handleSortByChange={this.handleSortByChange} />
           <div className="recipes-list-container">
-            {recipesList.length !== 0 ? recipesList.map((recipeData) => (
-              <RecipesList
-                key={recipeData.idMeal}
-                name={recipeData.strMeal}
-                thumbnail={recipeData.strMealThumb}
-                rating={recipeData.rating}
-                time={recipeData.time}
-                level={recipeData.level}
-                people={recipeData.people}
-              />
-            ))
-              : <div>No recipes found</div>}
+            {recipesList.length !== 0 ? (
+              recipesList.map((recipeData) => (
+                <RecipesList
+                  key={recipeData.idMeal}
+                  name={recipeData.strMeal}
+                  thumbnail={recipeData.strMealThumb}
+                  rating={recipeData.rating}
+                  time={recipeData.time}
+                  level={recipeData.level}
+                  people={recipeData.people}
+                />
+              ))
+            ) : (
+              <div>No recipes found</div>
+            )}
           </div>
         </div>
       </div>
