@@ -1,9 +1,11 @@
 import React from "react";
 import axios from "axios";
+import { IoMdClose } from 'react-icons/io';
 import SearchBar from "../SharedComponents/SearchBar";
 import RecipesList from "../SharedComponents/RecipesList";
 import CategoriesList from "./categoriesList";
 import SortBy from "../SharedComponents/SortBy";
+
 
 const rating = [1, 2, 3, 4, 5];
 const time = [30, 45, 60, 90];
@@ -141,7 +143,12 @@ class Recipes extends React.Component {
   };
 
   render() {
-    const { categories, recipesList, searchValue } = this.state;
+    const {
+      categories,
+      recipesList,
+      searchValue,
+      chosenCategory,
+    } = this.state;
     return (
       <div className="page-wrapper">
         <div className="recipes-container-left">
@@ -163,21 +170,64 @@ class Recipes extends React.Component {
           </div>
         </div>
         <div className="recipes-container-right">
-          
-          <SortBy handleSortByChange={this.handleSortByChange} />
-          <div className="recipes-list-container">
-            {recipesList.length !== 0 ? recipesList.map((recipeData) => (
-              <RecipesList
-                key={recipeData.idMeal}
-                name={recipeData.strMeal}
-                thumbnail={recipeData.strMealThumb}
-                rating={recipeData.rating}
-                time={recipeData.time}
-                level={recipeData.level}
-                people={recipeData.people}
+          {chosenCategory === "" && searchValue === "" && (
+            <div className="search-info">
+              <p>
+                choose a
+                <span> category </span>
+                or search recipe by
+                <span> name</span>
+              </p>
+            </div>
+          )}
+          {chosenCategory !== "" && (
+            <div className="search-info">
+              <p>
+                all recipes for
+                <span>
+                  {` ${chosenCategory}`}
+                </span>
+              </p>
+              <IoMdClose
+                className="icon"
+                onClick={this.toggleBottomTab}
               />
-            ))
-              : <div>No recipes found</div>}
+            </div>
+          )}
+          {searchValue !== "" && recipesList.length !== 0 && (
+            <div className="search-info">
+              <p>
+                <span>
+                  {`${recipesList.length} `}
+                </span>
+                recipes avalible
+              </p>
+            </div>
+          )}
+          {recipesList.length !== 0
+          && (
+          <SortBy handleSortByChange={this.handleSortByChange} />
+          )}
+          <div className="recipes-list-container">
+            {searchValue !== "" && recipesList.length === 0 ? (
+              <div className="search-info">
+                <p>
+                  <span>sorry, </span>
+                  no recipes match your search
+                </p>
+              </div>
+            ) : (
+              recipesList.map((recipeData) => (
+                <RecipesList
+                  key={recipeData.idMeal}
+                  name={recipeData.strMeal}
+                  thumbnail={recipeData.strMealThumb}
+                  rating={recipeData.rating}
+                  time={recipeData.time}
+                  level={recipeData.level}
+                  people={recipeData.people}
+                />
+              )))}
           </div>
         </div>
       </div>
