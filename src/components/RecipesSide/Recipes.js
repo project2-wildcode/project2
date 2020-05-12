@@ -82,9 +82,12 @@ class Recipes extends React.Component {
 					  		people: people[randomNum(4)],
 			  			};
 				  		return { ...recipe, ...extraInfo };
-				  	});
+            });
+            const sortedList = updatedRecipesList.sort((recipeA, recipeB) => {
+              return recipeB.rating - recipeA.rating;
+            });
 			  		this.setState({
-              recipesList: updatedRecipesList,
+              recipesList: sortedList,
               searchValue: value,
             });
 		  		}
@@ -159,9 +162,10 @@ class Recipes extends React.Component {
           </div>
         </div>
         <div className="recipes-container-right">
+          
           <SortBy handleSortByChange={this.handleSortByChange} />
           <div className="recipes-list-container">
-            {recipesList !== null ? recipesList.map((recipeData) => (
+            {recipesList.length !== 0 ? recipesList.map((recipeData) => (
               <RecipesList
                 key={recipeData.idMeal}
                 name={recipeData.strMeal}
@@ -172,7 +176,7 @@ class Recipes extends React.Component {
                 people={recipeData.people}
               />
             ))
-              : 'No recipes found'}
+              : <div>No recipes found</div>}
           </div>
         </div>
       </div>

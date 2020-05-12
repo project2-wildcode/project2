@@ -5,7 +5,7 @@ function IngredientsList(props) {
   const { name, addFilter } = props;
 
   const searchUrl = name.split(' ').join('%20');
-  
+
   return (
     <div className="ingredients-card" onClick={() => addFilter(name)}>
       <img

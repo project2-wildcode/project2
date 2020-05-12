@@ -1,13 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import StarRatings from "react-star-ratings";
-import { GiCookingPot } from "react-icons/gi";
-import { MdPeople } from "react-icons/md";
-import { AiFillClockCircle } from "react-icons/ai";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import StarRatings from 'react-star-ratings';
+import { GiCookingPot } from 'react-icons/gi';
+import { MdPeople } from 'react-icons/md';
+import { AiFillClockCircle } from 'react-icons/ai';
 
 function RecipesList(props) {
-  const { name, selectRecipe, rating, time, level, people, thumbnail } = props;
+  const {
+    name,
+    selectRecipe,
+    rating,
+    time,
+    level,
+    people,
+    thumbnail,
+  } = props;
   return (
     <div
       className="recipes-list-card"
@@ -41,5 +49,15 @@ function RecipesList(props) {
     </div>
   );
 }
+
+RecipesList.propTypes = {
+  name: PropTypes.string.isRequired,
+  level: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  time: PropTypes.number.isRequired,
+  people: PropTypes.number.isRequired,
+  selectRecipe: PropTypes.func.isRequired,
+};
 
 export default RecipesList;
