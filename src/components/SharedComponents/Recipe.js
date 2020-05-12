@@ -9,7 +9,7 @@ import { AiFillClockCircle } from 'react-icons/ai';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
 
-class recipeInfo extends Component {
+class Recipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class recipeInfo extends Component {
   }
 
   componentDidMount() {
-	  const { location } = this.props;
+    const { location } = this.props;
     const { state } = location;
     const {
 	  name,
@@ -147,4 +147,12 @@ class recipeInfo extends Component {
 	}
 }
 
-export default recipeInfo;
+Recipe.propTypes = {
+  name: PropTypes.string.isRequired,
+  level: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  time: PropTypes.number.isRequired,
+  people: PropTypes.number.isRequired,
+};
+
+export default Recipe;

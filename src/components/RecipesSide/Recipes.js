@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { IoMdClose } from "react-icons/io";
 import SearchBar from "../SharedComponents/SearchBar";
 import RecipesList from "../SharedComponents/RecipesList";
 import CategoriesList from "./categoriesList";
@@ -141,7 +142,7 @@ class Recipes extends React.Component {
   };
 
   render() {
-    const { categories, recipesList, searchValue } = this.state;
+    const { categories, recipesList, searchValue, chosenCategory } = this.state;
     return (
       <div className="page-wrapper">
         <div className="recipes-container-left">
@@ -163,9 +164,44 @@ class Recipes extends React.Component {
           </div>
         </div>
         <div className="recipes-container-right">
-          <SortBy handleSortByChange={this.handleSortByChange} />
+          {chosenCategory === "" && searchValue === "" && (
+            <div className="search-info">
+              <p>
+                choose a<span> category </span>
+                or search recipe by
+                <span> name</span>
+              </p>
+            </div>
+          )}
+          {chosenCategory !== "" && (
+            <div className="search-info">
+              <p>
+                all recipes for
+                <span>{` ${chosenCategory}`}</span>
+              </p>
+              <IoMdClose className="icon" onClick={this.toggleBottomTab} />
+            </div>
+          )}
+          {searchValue !== "" && recipesList.length !== 0 && (
+            <div className="search-info">
+              <p>
+                <span>{`${recipesList.length} `}</span>
+                recipes avalible
+              </p>
+            </div>
+          )}
+          {recipesList.length !== 0 && (
+            <SortBy handleSortByChange={this.handleSortByChange} />
+          )}
           <div className="recipes-list-container">
-            {recipesList.length !== 0 ? (
+            {searchValue !== "" && recipesList.length === 0 ? (
+              <div className="search-info">
+                <p>
+                  <span>sorry, </span>
+                  no recipes match your search
+                </p>
+              </div>
+            ) : (
               recipesList.map((recipeData) => (
                 <RecipesList
                   key={recipeData.idMeal}
@@ -177,8 +213,6 @@ class Recipes extends React.Component {
                   people={recipeData.people}
                 />
               ))
-            ) : (
-              <div>No recipes found</div>
             )}
           </div>
         </div>
