@@ -7,7 +7,7 @@ import { GoPrimitiveDot } from 'react-icons/go';
 function HomeIngredients() {
   return (
     <div id="home-ingredients">
-      <div className="home-page-2-left">
+      <div className="home-ingredients-left">
         <h1>
           search recipes by
           <span> ingredient</span>
@@ -42,7 +42,7 @@ function HomeIngredients() {
         </div>
         <a href="#home-recipes"><IoIosArrowForward className="nxt-icon" /></a>
       </div>
-      <div className="home-page-2-right" />
+      <div className="home-ingredients-right" />
     </div>
   );
 }
