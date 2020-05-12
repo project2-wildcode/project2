@@ -1,0 +1,25 @@
+/********* MIXINS *********/
+
+
+/********* COLORS *********/
+
+$yellow: #F7C233;
+$grey:#d8d8d8;
+$shadow: rgba(0,0,0,0.3);
+
+/********* FONTS *********/
+
+@font-face{
+  font-family: Jost-bold;
+  src: url(./fonts/Jost-Bold.ttf)
+}
+
+@font-face{
+  font-family: Jost-semiBold;
+  src: url(./fonts/Jost-SemiBold.ttf)
+}
+
+@font-face{
+  font-family: Jost-regular;
+  src: url(./fonts/Jost-Regular.ttf)
+}
