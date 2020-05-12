@@ -6,7 +6,6 @@ import SearchBar from "../SharedComponents/SearchBar";
 import RecipesList from "../SharedComponents/RecipesList";
 import NumRecipes from "./NumRecipes";
 import SortBy from "../SharedComponents/SortBy";
-import PropTypes from "prop-types";
 
 const ratingArr = [1, 2, 3, 4, 5];
 const timeArr = [30, 45, 60, 90];
@@ -30,8 +29,7 @@ class Ingredient extends Component {
   }
 
   componentDidMount() {
-    const url =
-      "https://www.themealdb.com/api/json/v2/9973533/list.php?i=ingredient";
+    const url = "https://www.themealdb.com/api/json/v2/9973533/list.php?i=ingredient";
     axios
       .get(url)
       .then((response) => response.data.meals)
@@ -64,11 +62,11 @@ class Ingredient extends Component {
   handleChange = (event) => {
     const { value } = event.target;
     const { allIngredients } = this.state;
-    const filteredIngredients = allIngredients.filter((ingredient) => {
-      return ingredient.strIngredient
+    const filteredIngredients = allIngredients.filter((ingredient) => (
+      ingredient.strIngredient
         .toLowerCase()
-        .includes(value.toLowerCase());
-    });
+        .includes(value.toLowerCase())
+    ));
     this.setState({
       searchValue: value,
       ingredientsList: filteredIngredients,
@@ -108,9 +106,9 @@ class Ingredient extends Component {
             };
             return { ...recipe, ...extraInfo };
           });
-          const sortedList = updatedRecipesList.sort((recipeA, recipeB) => {
-            return recipeB.rating - recipeA.rating;
-          });
+          const sortedList = updatedRecipesList.sort((recipeA, recipeB) => (
+            recipeB.rating - recipeA.rating
+          ));
           this.setState({ recipesList: sortedList });
         }
       });
@@ -143,20 +141,25 @@ class Ingredient extends Component {
     const { recipesList } = this.state;
 
     if (value === "time") {
-      const sortedList = recipesList.sort((recipeA, recipeB) => {
-        return recipeA.time - recipeB.time;
-      });
+      const sortedList = recipesList.sort((recipeA, recipeB) => (
+        recipeA.time - recipeB.time
+      ));
       this.setState({ recipesList: sortedList });
     } else {
-      const sortedList = recipesList.sort((recipeA, recipeB) => {
-        return recipeB.rating - recipeA.rating;
-      });
+      const sortedList = recipesList.sort((recipeA, recipeB) => (
+        recipeB.rating - recipeA.rating
+      ));
       this.setState({ recipesList: sortedList });
     }
   };
 
   render() {
-    const { ingredientsList, filters, searchValue, recipesList } = this.state;
+    const {
+      ingredientsList,
+      filters,
+      searchValue,
+      recipesList
+    } = this.state;
 
     return (
       <div className="page-wrapper">
@@ -193,7 +196,8 @@ class Ingredient extends Component {
           />
           <SortBy handleSortByChange={this.handleSortByChange} />
           <div className="recipes-list-container">
-            {recipesList !== null &&
+            {recipesList !== null
+            && (
               recipesList.map((recipe) => (
                 <RecipesList
                   key={recipe.idMeal}
@@ -205,7 +209,7 @@ class Ingredient extends Component {
                   people={recipe.people}
                   selectRecipe={this.selectRecipe}
                 />
-              ))}
+              )))}
           </div>
         </div>
       </div>

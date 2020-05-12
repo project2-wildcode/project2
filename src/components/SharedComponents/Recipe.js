@@ -26,6 +26,7 @@ class Recipe extends Component {
       time,
       level,
       people,
+      from,
     } = state;
     const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${name}`;
     axios
@@ -37,6 +38,7 @@ class Recipe extends Component {
           perpTime: time,
           difficulty: level,
           numOfPeople: people,
+          path: from
         };
         const recipeUpdatedData = { ...recipeData, ...newInfo };
         this.setState({ recipeInfo: recipeUpdatedData });

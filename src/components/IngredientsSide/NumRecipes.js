@@ -6,8 +6,8 @@ function NumRecipes(props) {
   switch (numRecipes) {
     case 0:
       return (
-        <div className="num-of-recipes-wrapper">
-          <p className="num-of-recipes-info">
+        <div className="search-info">
+          <p>
             click the cards to add
             <span>ingredients</span>
           </p>
@@ -15,8 +15,8 @@ function NumRecipes(props) {
       );
     case null:
       return (
-        <div className="num-of-recipes-wrapper">
-          <p className="num-of-recipes-info">
+        <div className="search-info">
+          <p>
             sorry, no recipes avalible.
             <br />
             <span>try other ingredients</span>
@@ -25,8 +25,8 @@ function NumRecipes(props) {
       );
     default:
       return (
-        <div className="num-of-recipes-wrapper">
-          <p className="num-of-recipes-info">
+        <div className="search-info">
+          <p>
             <span>{numRecipes}</span>
             {numRecipes === 1 ? "recipe" : "recipes"}
             available
