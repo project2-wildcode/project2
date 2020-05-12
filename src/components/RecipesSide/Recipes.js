@@ -51,9 +51,9 @@ class Recipes extends React.Component {
           };
           return { ...recipe, ...extraInfo };
         });
-        const sortedList = updatedRecipesList.sort((recipeA, recipeB) => {
-          return recipeB.rating - recipeA.rating;
-        });
+        const sortedList = updatedRecipesList.sort((recipeA, recipeB) => (
+          recipeB.rating - recipeA.rating
+        ));
         this.setState({
           recipesList: sortedList,
           chosenCategory: name,
@@ -84,9 +84,9 @@ class Recipes extends React.Component {
               };
               return { ...recipe, ...extraInfo };
             });
-            const sortedList = updatedRecipesList.sort((recipeA, recipeB) => {
-              return recipeB.rating - recipeA.rating;
-            });
+            const sortedList = updatedRecipesList.sort((recipeA, recipeB) => (
+              recipeB.rating - recipeA.rating
+            ));
             this.setState({
               recipesList: sortedList,
               searchValue: value,
@@ -142,7 +142,12 @@ class Recipes extends React.Component {
   };
 
   render() {
-    const { categories, recipesList, searchValue, chosenCategory } = this.state;
+    const {
+      categories,
+      recipesList,
+      searchValue,
+      chosenCategory
+    } = this.state;
     return (
       <div className="page-wrapper">
         <div className="recipes-container-left">
@@ -167,7 +172,8 @@ class Recipes extends React.Component {
           {chosenCategory === "" && searchValue === "" && (
             <div className="search-info">
               <p>
-                choose a<span> category </span>
+                choose a
+                <span> category </span>
                 or search recipe by
                 <span> name</span>
               </p>

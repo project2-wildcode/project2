@@ -120,7 +120,7 @@ class Recipe extends Component {
         <div className="recipeInfo-container-right">
           <div className="instructions-title-wrapper">
             <h2 className="tab-title">Instructions:</h2>
-            { /*bottomTabExpanded ? <IoIosArrowDown className="toggle-icon" onClick={toggleBottomTab} /> : <IoIosArrowUp className="toggle-icon" onClick={toggleBottomTab} />*/}
+            { /* bottomTabExpanded ? <IoIosArrowDown className="toggle-icon" onClick={toggleBottomTab} /> : <IoIosArrowUp className="toggle-icon" onClick={toggleBottomTab} /> */ }
           </div>
           <div className="instructions-wrapper-right">
             <h2 className="instructions-title">Instructions</h2>
@@ -130,15 +130,15 @@ class Recipe extends Component {
                   <p className="instructions">
                     <span>
                       {index + 1}
-      .
-    </span>
+                      .
+                    </span>
                     {' '}
                     {instruction}
                   </p>
                 )))}
 
             <h2 className="video-title">Video:</h2>
-            <a href={recipeInfo.strYoutube} target="_blank">click to get instructions on video</a>
+            <a href={recipeInfo.strYoutube} target="_blank" rel="noopener noreferrer">click to get instructions on video</a>
           </div>
         </div>
 
