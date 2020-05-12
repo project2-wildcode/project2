@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import IngredientsList from './IngredientsList';
-import Filters from './Filters';
-import SearchBar from '../SharedComponents/SearchBar';
-import RecipesList from '../SharedComponents/RecipesList';
-import NumRecipes from './NumRecipes';
-import SortBy from '../SharedComponents/SortBy';
+import React, { Component } from "react";
+import axios from "axios";
+import IngredientsList from "./IngredientsList";
+import Filters from "./Filters";
+import SearchBar from "../SharedComponents/SearchBar";
+import RecipesList from "../SharedComponents/RecipesList";
+import NumRecipes from "./NumRecipes";
+import SortBy from "../SharedComponents/SortBy";
+import PropTypes from "prop-types";
 
 const ratingArr = [1, 2, 3, 4, 5];
 const timeArr = [30, 45, 60, 90];
-const levelArr = ['Easy', 'Medium', 'Hard'];
+const levelArr = ["Easy", "Medium", "Hard"];
 const peopleArr = [1, 2, 3, 4];
 
 function randomNum(num) {
@@ -22,14 +23,15 @@ class Ingredient extends Component {
     this.state = {
       allIngredients: [],
       ingredientsList: [],
-      searchValue: '',
+      searchValue: "",
       filters: [],
       recipesList: [],
     };
   }
 
   componentDidMount() {
-    const url = 'https://www.themealdb.com/api/json/v2/9973533/list.php?i=ingredient';
+    const url =
+      "https://www.themealdb.com/api/json/v2/9973533/list.php?i=ingredient";
     axios
       .get(url)
       .then((response) => response.data.meals)
@@ -77,13 +79,13 @@ class Ingredient extends Component {
     let searchIngredients = null;
 
     if (filters.length === 1) {
-      searchIngredients = filters[0].split(' ').join('_');
+      searchIngredients = filters[0].split(" ").join("_");
     }
 
     if (filters.length > 1) {
       searchIngredients = filters
-        .map((filter) => filter.split(' ').join('_'))
-        .join(',');
+        .map((filter) => filter.split(" ").join("_"))
+        .join(",");
     }
 
     const url = `https://www.themealdb.com/api/json/v2/9973533/filter.php?i=${searchIngredients}`;
@@ -119,19 +121,19 @@ class Ingredient extends Component {
     recipeRating,
     recipeTime,
     recipeLevel,
-    recipePeople,
+    recipePeople
   ) => {
-    const searchValue = name.split(' ').join('_');
+    const searchValue = name.split(" ").join("_");
     const { history } = this.props;
     history.push({
-      pathname: '/recipe',
+      pathname: "/recipe",
       state: {
         name: searchValue,
         rating: recipeRating,
         time: recipeTime,
         level: recipeLevel,
         people: recipePeople,
-        from: 'ingredients',
+        from: "ingredients",
       },
     });
   };
@@ -140,7 +142,7 @@ class Ingredient extends Component {
     const { value } = event.target;
     const { recipesList } = this.state;
 
-    if (value === 'time') {
+    if (value === "time") {
       const sortedList = recipesList.sort((recipeA, recipeB) => {
         return recipeA.time - recipeB.time;
       });
@@ -154,12 +156,7 @@ class Ingredient extends Component {
   };
 
   render() {
-    const {
-      ingredientsList,
-      filters,
-      searchValue,
-      recipesList,
-    } = this.state;
+    const { ingredientsList, filters, searchValue, recipesList } = this.state;
 
     return (
       <div className="page-wrapper">
@@ -196,8 +193,7 @@ class Ingredient extends Component {
           />
           <SortBy handleSortByChange={this.handleSortByChange} />
           <div className="recipes-list-container">
-            {recipesList !== null
-            && (
+            {recipesList !== null &&
               recipesList.map((recipe) => (
                 <RecipesList
                   key={recipe.idMeal}
@@ -209,7 +205,7 @@ class Ingredient extends Component {
                   people={recipe.people}
                   selectRecipe={this.selectRecipe}
                 />
-              )))}
+              ))}
           </div>
         </div>
       </div>

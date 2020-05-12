@@ -5,7 +5,7 @@ function SortBy(props) {
   const { handleSortByChange } = props;
   return (
     <div>
-      <label htmlFor="filter">Sort by:</label>
+      <label for="filter">Sort by:</label>
       <select onChange={handleSortByChange} id="filter">
         <option key="rating" value="rating">
           Top rated
