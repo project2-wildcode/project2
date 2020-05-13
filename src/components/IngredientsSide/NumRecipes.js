@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
+
 
 function NumRecipes(props) {
   const { numRecipes } = props;
@@ -31,6 +33,7 @@ function NumRecipes(props) {
             {numRecipes === 1 ? "recipe " : "recipes "}
             available
           </p>
+          <IoIosArrowUp className="icon" />
         </div>
       );
   }

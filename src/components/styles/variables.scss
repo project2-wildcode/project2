@@ -7,6 +7,30 @@
   background-color: $color;
 }
 
+/* >TABLET MIXINS */
+
+@mixin container-bottom {
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+@mixin expand-close-btn{
+  display: flex;
+  align-self: center;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 25px;
+  color: $yellow;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: $shadow 4px 4px 5px;
+}
+
+
 /* INGREDIENTS/CATEGORIES CARDS MIXINS */
 
 @mixin cards-container {
