@@ -17,8 +17,8 @@ function RecipesList(props) {
     thumbnail,
   } = props;
   let displayName = name;
-  if (name.length > 20) {
-    displayName = `${name.substring(0, 20)}...`;
+  if (name.length > 30) {
+    displayName = `${name.substring(0, 30)}...`;
   }
   return (
     <div

@@ -6,6 +6,15 @@
   img {
     @include recipe-card-img;
   }
+
+  h2{
+    font-family: Jost-bold;
+    margin-left: 10px;
+  }
+
+  .star-ratings{
+    margin-left: 10px;
+  }
 }
 
 .card-info {

@@ -22,6 +22,7 @@
   height: 250px;
   background-color: $yellow;
   margin: 10px 20px;
+  outline: none;
   border-radius: 20px;
   box-shadow: 4px 4px 6px $shadow;
 }
@@ -59,7 +60,6 @@
   border-radius: 20px;
   box-shadow: 4px 4px 8px $shadow;
   align-items: center;
-  justify-content: space-evenly;
 }
 
 @mixin recipe-card-img {

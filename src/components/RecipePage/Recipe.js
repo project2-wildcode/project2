@@ -8,6 +8,10 @@ import { MdPeople, MdArrowBack } from 'react-icons/md';
 import { AiFillClockCircle } from 'react-icons/ai';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
+function strManipulation(str) {
+  return str.replace(/(\r\n|\n|\r)/gm, '').split('. ');
+}
+
 
 class Recipe extends Component {
   constructor(props) {
@@ -33,6 +37,7 @@ class Recipe extends Component {
       .get(url)
       .then((response) => response.data.meals[0])
       .then((recipeData) => {
+        recipeData.strInstructions = strManipulation(recipeData.strInstructions);
         const newInfo = {
           recipeInfoRating: rating,
           perpTime: time,
@@ -64,6 +69,8 @@ class Recipe extends Component {
 
   render() {
     const { recipeInfo } = this.state;
+    console.log(recipeInfo.strInstructions)
+
     return (
       <div className="page-wrapper">
         <div className="recipeInfo-left-container">
@@ -138,7 +145,6 @@ class Recipe extends Component {
                     {instruction}
                   </p>
                 )))}
-
             <h2 className="video-title">Video:</h2>
             <a href={recipeInfo.strYoutube} target="_blank" rel="noopener noreferrer">click to get instructions on video</a>
           </div>
