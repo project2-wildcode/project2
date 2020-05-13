@@ -189,9 +189,13 @@ class Ingredient extends Component {
           <NumRecipes
             numRecipes={recipesList === null ? null : recipesList.length}
           />
+          {recipesList !== null && recipesList.length > 0
+          && (
           <SortBy handleSortByChange={this.handleSortByChange} />
+          )}
           <div className="recipes-list-container">
-            {recipesList !== null &&
+            {recipesList !== null
+            && (
               recipesList.map((recipe) => (
                 <RecipesList
                   key={recipe.idMeal}
@@ -203,7 +207,7 @@ class Ingredient extends Component {
                   people={recipe.people}
                   selectRecipe={this.selectRecipe}
                 />
-              ))}
+              )))}
           </div>
         </div>
       </div>

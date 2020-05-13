@@ -6,11 +6,15 @@
 
 .ingredients-left-container {
   @include half-page-container(white);
+  text-align: center;
 }
 
 .ingredients-title {
+  font-family: Jost-Bold;
+  color: $grey;
   margin-top: 100px;
 }
+
 .filters-container {
   @include cards-container;
 
@@ -36,6 +40,7 @@
     .remove {
       color: white;
       font-size: 20px;
+      cursor: pointer;
     }
   }
 }

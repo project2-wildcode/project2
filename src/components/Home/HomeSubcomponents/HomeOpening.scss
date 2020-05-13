@@ -1,0 +1,71 @@
+@import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
+
+#home-opening {
+    @include home-page-container;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    h1{
+      font-family: Jost-Bold;
+      font-size: 65px;  
+      margin: 30px;
+      @include media('<=desktop-small') {
+        font-size: 55px;
+        margin-left: 30px;
+      }
+      @include media('<=tablet') {
+        align-self: flex-start;
+        font-size: 50px;
+        margin-left: 30px;
+      }
+   
+      span{
+        color: $yellow
+      }
+    }  
+   
+    .desktop {
+      font-family: Jost-Bold;
+      font-size: 30px;
+      color: $grey;
+      @include media('<=tablet'){
+        display: none;
+      } 
+    }
+   
+    .tablet{
+      display: none;
+      @include media('<=tablet'){
+        display: flex;
+        font-family: Jost-Bold;
+        font-size: 30px;
+        color: $grey;
+      } 
+    }
+   
+    .dot-indicators{
+      display: none;
+      @include media('<=tablet') {
+        display: flex;
+        position: absolute;
+        bottom: 30px;
+      }
+   
+      .dot{
+        color: $grey;
+      }
+    
+      .active{
+        color: $yellow;
+      }
+    }
+   
+    .nxt-icon{
+      @include nxt-icon;
+      @include media('<=tablet') {
+        display: none;
+      }
+    }
+  }

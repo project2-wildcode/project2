@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./SortBy.scss";
 
 function SortBy(props) {
   const { handleSortByChange } = props;
   return (
-    <div>
+    <div className="sort-by">
       <label for="filter">Sort by:</label>
       <select onChange={handleSortByChange} id="filter">
         <option key="rating" value="rating">

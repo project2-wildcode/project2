@@ -27,6 +27,7 @@
   outline: none;
   border-radius: 20px;
   box-shadow: 4px 4px 6px $shadow;
+  cursor: pointer;
 }
 
 @mixin card-img {
