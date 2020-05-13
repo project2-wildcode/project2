@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import StarRatings from 'react-star-ratings';
-import { GiCookingPot } from 'react-icons/gi';
-import { MdPeople } from 'react-icons/md';
-import { AiFillClockCircle } from 'react-icons/ai';
+import React from "react";
+import PropTypes from "prop-types";
+import StarRatings from "react-star-ratings";
+import { GiCookingPot } from "react-icons/gi";
+import { MdPeople } from "react-icons/md";
+import { AiFillClockCircle } from "react-icons/ai";
+import "./RecipeList.scss";
 
 function RecipesList(props) {
   const {
@@ -25,31 +25,30 @@ function RecipesList(props) {
       className="recipes-list-card"
       onClick={() => selectRecipe(name, rating, time, level, people)}
     >
-      <Link to="/recipe">
-        <img src={thumbnail} alt={name} />
-        <div className="card-info">
-          <h2 title={name}>{displayName}</h2>
-          <StarRatings
-            rating={rating}
-            starRatedColor="blue"
-            numberOfStars={5}
-          />
-          <div className="extra-info">
-            <div className="extra-info-wrapper">
-              <AiFillClockCircle className="icon" />
-              <p>{time}</p>
-            </div>
-            <div className="extra-info-wrapper">
-              <MdPeople className="icon" />
-              <p>{people}</p>
-            </div>
-            <div className="extra-info-wrapper">
-              <GiCookingPot className="icon" />
-              <p>{level}</p>
-            </div>
+      <img src={thumbnail} alt={name} />
+      <div className="card-info">
+        <h2 title={name}>{displayName}</h2>
+        <StarRatings
+          rating={rating}
+          starRatedColor="#F7C233"
+          numberOfStars={5}
+          starDimension="20px"
+        />
+        <div className="extra-info">
+          <div className="extra-info-wrapper">
+            <AiFillClockCircle className="icon" />
+            <p>{time}</p>
+          </div>
+          <div className="extra-info-wrapper">
+            <MdPeople className="icon" />
+            <p>{people}</p>
+          </div>
+          <div className="extra-info-wrapper">
+            <GiCookingPot className="icon" />
+            <p>{level}</p>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }
