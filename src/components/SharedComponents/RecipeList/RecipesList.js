@@ -16,6 +16,10 @@ function RecipesList(props) {
     people,
     thumbnail,
   } = props;
+  let displayName = name;
+  if (name.length > 20) {
+    displayName = `${name.substring(0, 20)}...`;
+  }
   return (
     <div
       className="recipes-list-card"
@@ -24,7 +28,7 @@ function RecipesList(props) {
       <Link to="/recipe">
         <img src={thumbnail} alt={name} />
         <div className="card-info">
-          <h2>{name}</h2>
+          <h2 title={name}>{displayName}</h2>
           <StarRatings
             rating={rating}
             starRatedColor="blue"
