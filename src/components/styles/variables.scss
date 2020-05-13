@@ -1,5 +1,54 @@
 /********* MIXINS *********/
 
+@mixin half-page-container($color) {
+  width: 50%;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: $color;
+}
+
+@mixin cards-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@mixin card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 250px;
+  background-color: $yellow;
+  margin: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 6px $shadow;
+}
+
+@mixin card-img {
+  max-width: 100px;
+  padding-top: 30px;
+}
+
+@mixin card-title{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+  bottom: 0;
+  border-radius: 0 0 20px 20px;
+  background-color: white;
+}
+
+@mixin card-p{
+  font-family: Jost-semiBold;
+  font-size: 20px;
+  text-align: center;
+  margin: 0 10px;
+}
 
 /********* COLORS *********/
 

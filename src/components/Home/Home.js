@@ -6,11 +6,9 @@ import HomeRecipes from './HomeSubcomponents/HomeRecipes';
 function Home() {
   return (
     <div className="home-wrapper">
-      <div className="page-wrapper">
-        <HomeOpening />
-        <HomeIngredients />
-        <HomeRecipes />
-      </div>
+      <HomeOpening />
+      <HomeIngredients />
+      <HomeRecipes />
     </div>
   );
 }

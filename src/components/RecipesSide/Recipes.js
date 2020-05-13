@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { IoMdClose } from "react-icons/io";
-import SearchBar from "../SharedComponents/SearchBar";
-import RecipesList from "../SharedComponents/RecipesList";
+import SearchBar from "../SharedComponents/SearchBar/SearchBar";
+import RecipesList from "../SharedComponents/RecipeList/RecipesList";
 import CategoriesList from "./categoriesList";
-import SortBy from "../SharedComponents/SortBy";
+import SortBy from "../SharedComponents/SortBy/SortBy";
 
 const rating = [1, 2, 3, 4, 5];
 const time = [30, 45, 60, 90];

@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import IngredientsList from "./IngredientsList";
 import Filters from "./Filters";
-import SearchBar from "../SharedComponents/SearchBar";
-import RecipesList from "../SharedComponents/RecipesList";
+import SearchBar from "../SharedComponents/SearchBar/SearchBar";
+import RecipesList from "../SharedComponents/RecipeList/RecipesList";
 import NumRecipes from "./NumRecipes";
-import SortBy from "../SharedComponents/SortBy";
+import SortBy from "../SharedComponents/SortBy/SortBy";
+import "./Ingredient.scss";
 
 const ratingArr = [1, 2, 3, 4, 5];
 const timeArr = [30, 45, 60, 90];

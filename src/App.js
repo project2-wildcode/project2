@@ -4,12 +4,11 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import './App.css';
 import Recipes from './components/RecipesSide/Recipes';
 import Ingredient from './components/IngredientsSide/Ingredient';
 import Home from './components/Home/Home';
-import Navbar from './components/SharedComponents/Navbar';
-import Recipe from './components/SharedComponents/Recipe'
+import Navbar from './components/SharedComponents/Navbar/Navbar';
+import Recipe from './components/RecipePage/Recipe';
 
 function App() {
   return (
