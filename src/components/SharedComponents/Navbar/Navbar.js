@@ -10,16 +10,20 @@ function Navbar() {
 
   const [navExpand, setNavExpand] = useState(false);
 
-  const toggleNavExpand = () => {
-    setNavExpand(!navExpand);
+  const handleNavExpand = (operator) => {
+    if (operator === 'open') {
+      setNavExpand(true);
+    } else {
+      setNavExpand(false);
+    }
   };
 
   return (
     <div className={navExpand ? "navbar-expand" : "navbar"}>
-      {!navExpand ? <IoIosMenu className="burger-menu" onClick={toggleNavExpand} /> : <IoMdClose className="close-menu" onClick={toggleNavExpand} /> }
+      {!navExpand ? <IoIosMenu className="burger-menu" onClick={() => handleNavExpand('open')} /> : <IoMdClose className="close-menu" onClick={() => handleNavExpand('close')} /> }
       <ul className="navbar-items">
-        <li onClick={toggleNavExpand}><Link to="/ingredients">Ingredients</Link></li>
-        <li onClick={toggleNavExpand}><Link to="/recipes">Recipes</Link></li>
+        <li onClick={() => handleNavExpand('close')}><Link to="/ingredients">Ingredients</Link></li>
+        <li onClick={() => handleNavExpand('close')}><Link to="/recipes">Recipes</Link></li>
       </ul>
     </div>
   );

@@ -7,17 +7,18 @@
 }
 .recipeInfo-left-container {
   @include half-page-container(white);
-  margin-top: 100px;
 }
 
 .go-back {
-  position: absolute;
+  margin: 100px 0 0 30px;;
   color: black;
   font-size: 24px;
 }
 
 .recipeInfo-card {
   @include recipe-card;
+  margin-top: 20px;
+
   img {
     @include recipe-card-img;
   }
@@ -88,14 +89,10 @@
 
 .recipeInfo-container-right {
   @include half-page-container($yellow);
-  margin-top: 100px;
 }
 
 .instructions-title-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
+  display: none;
 }
 
 .tab-title {
@@ -134,7 +131,7 @@
   font-family: Jost-Bold;
 }
 
-a {
+.video-link {
   font-family: Jost-regular;
   font-size: 20px;
   margin-left: 30px;

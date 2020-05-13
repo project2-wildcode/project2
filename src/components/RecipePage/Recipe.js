@@ -148,6 +148,7 @@ class Recipe extends Component {
               ))}
             <h2 className="video-title">Video:</h2>
             <a
+              className="video-link"
               href={recipeInfo.strYoutube}
               target="_blank"
               rel="noopener noreferrer"

@@ -217,6 +217,7 @@ class Recipes extends React.Component {
                   time={recipeData.time}
                   level={recipeData.level}
                   people={recipeData.people}
+                  selectRecipe={this.selectRecipe}
                 />
               ))
             )}
