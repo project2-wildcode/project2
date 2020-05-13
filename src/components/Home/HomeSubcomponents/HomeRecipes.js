@@ -24,9 +24,7 @@ function HomeRecipes() {
           <br />
           Use our filters to find the top rated recipes as well as the fastest to cook!
         </p>
-        <button type="button" className="go-to-btn">
-          <Link to="/recipes">Go to recipes</Link>
-        </button>
+        <Link className="go-to-btn" to="/recipes">Go to recipes</Link>
         <p className="next-info">
           Want to search recipes by ingredient?
           <br />

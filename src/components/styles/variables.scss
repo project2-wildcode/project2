@@ -9,10 +9,10 @@
 
 /* >TABLET MIXINS */
 
-@mixin container-bottom {
+@mixin container-bottom($height) {
   background-color: white;
   width: 100%;
-  height: 100px;
+  height: $height;
   position: absolute;
   bottom: 0;
   border-radius: 20px 20px 0 0;
@@ -89,6 +89,7 @@
   border-radius: 20px;
   box-shadow: 4px 4px 8px $shadow;
   align-items: center;
+  cursor: pointer;
 }
 
 @mixin recipe-card-img {
@@ -165,20 +166,18 @@
 }
 
 @mixin home-go-to-btn{
-  align-self: center;
   width: fit-content;
-  height: 30px;
-  border-radius: 20px;
-  border: 1px solid $yellow;
-  transition: all .2s ease-in-out; 
-}
-
-@mixin home-page-go-to-btn-a{
+  height: fit-content;
+  color: $yellow;
+  text-align: center;
   font-family: Jost-semiBold;
   font-size: 16px;
   text-decoration: none;
-  color: $yellow;
-  padding: 5px 10px;
+  padding: 5px 20px;
+  align-self: center;
+  border-radius: 20px;
+  border: 1px solid $yellow;
+  transition: all .2s ease-in-out; 
 }
 
 @mixin next-info {

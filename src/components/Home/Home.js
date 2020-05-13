@@ -7,7 +7,7 @@ import './Home.scss';
 function Home() {
   return (
     <div className="home-wrapper">
-      <div className="page-wrapper">
+      <div className="home-page-wrapper">
         <HomeOpening />
         <HomeIngredients />
         <HomeRecipes />

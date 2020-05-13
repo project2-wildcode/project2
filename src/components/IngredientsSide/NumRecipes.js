@@ -4,11 +4,11 @@ import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
 
 function NumRecipes(props) {
-  const { numRecipes } = props;
+  const { numRecipes, toggleBottomTab, isBottomTabExpanded } = props;
   switch (numRecipes) {
     case 0:
       return (
-        <div className="search-info">
+        <div className="num-of-recipes-info">
           <p>
             click the cards to add
             <span> ingredients</span>
@@ -17,7 +17,7 @@ function NumRecipes(props) {
       );
     case null:
       return (
-        <div className="search-info">
+        <div className="num-of-recipes-info">
           <p>
             sorry, no recipes avalible.
             <br />
@@ -27,13 +27,15 @@ function NumRecipes(props) {
       );
     default:
       return (
-        <div className="search-info">
+        <div className="num-of-recipes-info">
           <p>
-            <span>{numRecipes} </span>
+            <span>
+              {`${numRecipes} `}
+            </span>
             {numRecipes === 1 ? "recipe " : "recipes "}
             available
           </p>
-          <IoIosArrowUp className="icon" />
+          {isBottomTabExpanded ? <IoIosArrowDown onClick={toggleBottomTab} className="toggle-bottom-tab-icon" /> : <IoIosArrowUp onClick={toggleBottomTab} className="toggle-bottom-tab-icon" />}
         </div>
       );
   }

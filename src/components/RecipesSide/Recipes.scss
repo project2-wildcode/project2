@@ -1,18 +1,9 @@
 @import '../styles/variables.scss';
+@import '../styles/breakpoints.scss';
 
 .page-wrapper {
     display: flex;
     width:100%;
-  }
-
-  .search-info{
-    font-family: Jost-bold;
-    font-size: 70px;
-    padding-top: 100px;
-    margin-left:30px;
-  }
-
-  .icon{
   }
 
   
@@ -48,21 +39,28 @@ width:100%;
           @include card-p;
           
         }
-    }
-}
+      }
+   }
 }
 
 .recipes-container-right {
         @include half-page-container($yellow);
-      }
+}
 
-      .search-info {
-        font-family: Jost-bold;
-        font-size: 70px;
-        padding-top: 100px;
-        margin-left:30px;}
+.search-info {
+  font-family: Jost-bold;
+  font-size: 70px;
+  padding-top: 100px;
+  margin-left:30px;
+  @include media('<=tablet'){
+    height: 100px;
+    background-color: $yellow;
+  }
+
+  span {
+    color: white;
+  }
+}
+
       
-        span {
-          color: white;
-        }
       

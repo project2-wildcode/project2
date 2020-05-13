@@ -1,0 +1,23 @@
+@import "./components/styles/breakpoints.scss";
+
+a{
+    margin: 0;
+
+    .logo{
+        position: absolute;
+        height: 30px;
+        top: 20px;
+        left: 30px;
+        font-size: 30px;
+        z-index: 10;
+    }
+}
+
+.bg{
+    position: absolute;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+    z-index: 5;
+}

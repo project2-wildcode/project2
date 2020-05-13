@@ -1,9 +1,10 @@
+@import "../styles/variables.scss";
+
+
 .page-wrapper {
   display: flex;
   position: relative;
 }
-@import "../styles/variables.scss";
-
 .recipeInfo-left-container {
   @include half-page-container(white);
   margin-top: 100px;

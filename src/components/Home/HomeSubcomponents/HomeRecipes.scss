@@ -39,17 +39,8 @@
   
         &:hover{
           background-color: $yellow;  
-  
-          a{ color: white; }
-        }  
-  
-          a{
-            font-family: Jost-semiBold;
-            font-size: 16px;
-            text-decoration: none;
-            color: $yellow;
-            padding: 5px 10px;
-          }
+          color: white;
+        } 
       }
   
       .next-info{

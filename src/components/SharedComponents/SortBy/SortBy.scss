@@ -3,6 +3,9 @@
 
 .sort-by{
     margin: 30px 0 30px 30px;
+    @include media('<=tablet'){
+      display: none;
+    }
 
     label{
       font-family: Jost-semiBold;

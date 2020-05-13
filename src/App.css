@@ -1,6 +1,6 @@
 
 /******* NAVBAR *******/
-
+/*
 .navbar{
   display: flex;
   justify-content: space-between;
@@ -29,7 +29,6 @@
   color: black;
 }
 
-/******* HOME *******/
 
 .container{
   display: flex;
@@ -46,7 +45,6 @@
   align-items: center;
 }
 
-/******* INGREDIENTS *******/
 
 .ingredients-container{
   text-align: center;
@@ -90,7 +88,6 @@
   background-color: rgb(182, 181, 181);
 }
 
-/******* FILTERS *******/
 
 .filters-wrapper{
   display: flex;
@@ -108,7 +105,6 @@
   cursor: pointer;
 }
 
-/******* SEARCH BAR *******/
 
 .search-bar{
   display: flex;
@@ -134,3 +130,5 @@
   position: absolute;
   right: 10px;
 }
+
+*/

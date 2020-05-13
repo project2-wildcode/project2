@@ -39,11 +39,9 @@
   
             &:hover{
               background-color: $yellow;  
-    
-              a{ color: white; }
+              color: white;
             }  
     
-              a{ @include home-page-go-to-btn-a;}
           }
   
           .next-info{

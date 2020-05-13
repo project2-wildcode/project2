@@ -26,9 +26,7 @@ function HomeIngredients() {
           <br />
           Save money and reduce waste!
         </p>
-        <button type="button" className="go-to-btn"> 
-          <Link to="/ingredients">Go to ingredients</Link>
-        </button>
+        <Link className="go-to-btn" to="/ingredients">Go to ingredients</Link>
         <p className="next-info">
           Prefere a good old recipe search?
           <br />

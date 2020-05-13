@@ -3,6 +3,7 @@
 
 .page-wrapper {
   display: flex;
+  position: relative;
 }
 
 .ingredients-left-container {
@@ -71,9 +72,16 @@
 
 .ingredients-container-right {
   @include half-page-container($yellow);
+  transition: all .3s ease-in-out;
   @include media('<=tablet'){
-    @include container-bottom 
+    @include container-bottom(100px);
   }
+}
+
+.ingredients-container-bottom{
+  @include container-bottom(80%);
+  transition: all .3s ease-in-out;
+  overflow-y: scroll;
 }
 
 .recipes-list-container {
@@ -83,7 +91,13 @@
   }
 }
 
-.search-info {
+.recipes-list-container-bottom{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.num-of-recipes-info {
   width: 100%;
   display: flex;
   align-items: center;
@@ -114,7 +128,7 @@
   }
 }
 
-.icon{
+.toggle-bottom-tab-icon{
   display: none;
   @include media('<=tablet'){
     @include expand-close-btn;

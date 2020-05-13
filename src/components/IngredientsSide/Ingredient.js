@@ -26,6 +26,7 @@ class Ingredient extends Component {
       searchValue: "",
       filters: [],
       recipesList: [],
+      isBottomTabExpanded: false,
     };
   }
 
@@ -153,8 +154,19 @@ class Ingredient extends Component {
     }
   };
 
+  toggleBottomTab = () => {
+    const { isBottomTabExpanded } = this.state;
+    this.setState({ isBottomTabExpanded: !isBottomTabExpanded });
+  }
+
   render() {
-    const { ingredientsList, filters, searchValue, recipesList } = this.state;
+    const {
+      ingredientsList,
+      filters,
+      searchValue,
+      recipesList,
+      isBottomTabExpanded,
+    } = this.state;
 
     return (
       <div className="page-wrapper">
@@ -185,15 +197,17 @@ class Ingredient extends Component {
           </div>
         </div>
 
-        <div className="ingredients-container-right">
+        <div className={isBottomTabExpanded ? "ingredients-container-bottom" : "ingredients-container-right"}>
           <NumRecipes
             numRecipes={recipesList === null ? null : recipesList.length}
+            toggleBottomTab={this.toggleBottomTab}
+            isBottomTabExpanded={isBottomTabExpanded}
           />
           {recipesList !== null && recipesList.length > 0
           && (
           <SortBy handleSortByChange={this.handleSortByChange} />
           )}
-          <div className="recipes-list-container">
+          <div className={isBottomTabExpanded ? "recipes-list-container-bottom" : "recipes-list-container"}>
             {recipesList !== null
             && (
               recipesList.map((recipe) => (
