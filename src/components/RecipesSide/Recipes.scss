@@ -1,1 +1,68 @@
 @import '../styles/variables.scss';
+
+.page-wrapper {
+    display: flex;
+    width:100%;
+  }
+
+  .search-info{
+    font-family: Jost-bold;
+    font-size: 70px;
+    padding-top: 100px;
+    margin-left:30px;
+  }
+
+  .icon{
+  }
+
+  
+
+
+
+  .recipes-list-container
+  {
+width:100%;
+  }
+
+  .recipes-container-left {
+    @include half-page-container(white);
+  }
+
+  .recipes-title {
+    margin-top: 100px;
+  }
+
+  .categories-cards-container {
+    @include cards-container;
+    .categories-card{
+        @include card;
+      
+      img {
+        @include card-img;
+      }
+  
+      .categories-card-title {
+        @include card-title;
+  
+        p {
+          @include card-p;
+          
+        }
+    }
+}
+}
+
+.recipes-container-right {
+        @include half-page-container($yellow);
+      }
+
+      .search-info {
+        font-family: Jost-bold;
+        font-size: 70px;
+        padding-top: 100px;
+        margin-left:30px;}
+      
+        span {
+          color: white;
+        }
+      

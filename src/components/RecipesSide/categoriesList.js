@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Recipes.scss";
+
 
 function CategoriesList(props) {
   const { name, thumbnail, getRecipesByCat } = props;
