@@ -3,62 +3,68 @@
 
 .page-wrapper {
     display: flex;
-    width:100%;
-  }
-
-  
-
-
-
-  .recipes-list-container
-  {
-width:100%;
+    position: relative;
   }
 
   .recipes-container-left {
     @include half-page-container(white);
+    text-align: center;
   }
 
   .recipes-title {
+    font-family: Jost-Bold;
+    color: $grey;
     margin-top: 100px;
   }
 
-  .categories-cards-container {
-    @include cards-container;
-    .categories-card{
-        @include card;
+.categories-cards-container {
+  @include cards-container;
+
+  .categories-card{
+      @include card;
       
-      img {
-        @include card-img;
-      }
+    img {
+      @include card-img;
+    }
   
-      .categories-card-title {
-        @include card-title;
+    .categories-card-title {
+      @include card-title;
   
-        p {
-          @include card-p;
-          
-        }
+      p {
+        @include card-p;
       }
-   }
+    }
+  }
 }
 
 .recipes-container-right {
-        @include half-page-container($yellow);
+  @include half-page-container($yellow);
+}
+
+.recipes-list-container{
+  width:100%;
 }
 
 .search-info {
-  font-family: Jost-bold;
-  font-size: 70px;
-  padding-top: 100px;
-  margin-left:30px;
-  @include media('<=tablet'){
-    height: 100px;
-    background-color: $yellow;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  p{
+    width: 80%;
+    font-family: Jost-Bold;
+    font-size: 70px;
+    margin: 100px 0 0 30px;
+    line-height: 1.2em;
+
+    span {
+      color: white;
+    }
   }
 
-  span {
-    color: white;
+  .close{
+    display: none;
   }
 }
 

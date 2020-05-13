@@ -30,7 +30,7 @@ function RecipesList(props) {
         <h2 title={name}>{displayName}</h2>
         <StarRatings
           rating={rating}
-          starRatedColor="#F7C233"
+          starRatedColor="#f5b131"
           numberOfStars={5}
           starDimension="20px"
         />

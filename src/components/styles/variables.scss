@@ -7,6 +7,20 @@
   background-color: $color;
 }
 
+@mixin navbar($width) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: $width;
+  height: 100vh;
+  background-image: url(../styles/images/navbar-expand1.png);
+  background-position: center;
+  background-size: cover;
+  z-index: 100;
+  transition: all .3s ease-in-out;
+}
+
 /* >TABLET MIXINS */
 
 @mixin container-bottom($height) {
@@ -90,6 +104,7 @@
   box-shadow: 4px 4px 8px $shadow;
   align-items: center;
   cursor: pointer;
+  transition: .3s ease-in;
 }
 
 @mixin recipe-card-img {
@@ -209,7 +224,7 @@
 
 /********* COLORS *********/
 
-$yellow: #f7c233;
+$yellow: #f5b131;
 $grey: #d8d8d8;
 $shadow: rgba(0, 0, 0, 0.3);
 

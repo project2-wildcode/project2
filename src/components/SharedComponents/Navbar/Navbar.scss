@@ -10,32 +10,12 @@
   background-color: white;
   z-index: 6;
   @include media('<=tablet'){
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    width: 0px;
-    height: 100vh;
-    background-image: url(../../styles/images/ingredientsmockup.jpg);
-    background-position: right;
-    background-size: cover;
-    transition: all .3s ease-in-out;
-    z-index: 10;
+    @include navbar(0)
   }
 }
 
 .navbar-expand{
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  width: 70%;
-  height: 100vh;
-  background-image: url(../../styles/images/ingredientsmockup.jpg);
-  background-position: right;
-  background-size: cover;
-  z-index: 100;
-  transition: all .3s ease-in-out;
+  @include navbar(70%)
 }
 
 .burger-menu{
@@ -45,7 +25,24 @@
     position: absolute;
     top: 20px;
     right: 30px;
+    font-size: 35px;
+    border-radius: 3px;
+    color: $yellow;
+    cursor: pointer;
+    z-index: 30;
+    transition: all .3s ease-in-out;
+  }
+}
+
+.close-menu{
+  display: none;
+  @include media('<=tablet'){
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 30px;
     font-size: 30px;
+    color: white;
     cursor: pointer;
     z-index: 30;
     transition: all .3s ease-in-out;
@@ -79,6 +76,8 @@
       text-decoration: none;
       @include media('<=tablet'){
         font-size: 25px;
+        color: white;
+
       }
     }
   }

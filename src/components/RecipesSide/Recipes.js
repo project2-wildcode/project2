@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import SearchBar from "../SharedComponents/SearchBar/SearchBar";
 import RecipesList from "../SharedComponents/RecipeList/RecipesList";
 import CategoriesList from "./categoriesList";
@@ -95,7 +95,6 @@ class Recipes extends React.Component {
           }
         });
     } else {
-      /* added */
       this.setState({
         searchValue: value,
         recipesList: [],
@@ -186,7 +185,7 @@ class Recipes extends React.Component {
                 all recipes for
                 <span>{` ${chosenCategory}`}</span>
               </p>
-              <IoMdClose className="icon" onClick={this.toggleBottomTab} />
+              <IoMdClose className="close" onClick={this.toggleBottomTab} />
             </div>
           )}
           {searchValue !== "" && recipesList.length !== 0 && (
@@ -209,18 +208,18 @@ class Recipes extends React.Component {
                 </p>
               </div>
             ) : (
-                recipesList.map((recipeData) => (
-                  <RecipesList
-                    key={recipeData.idMeal}
-                    name={recipeData.strMeal}
-                    thumbnail={recipeData.strMealThumb}
-                    rating={recipeData.rating}
-                    time={recipeData.time}
-                    level={recipeData.level}
-                    people={recipeData.people}
-                  />
-                ))
-              )}
+              recipesList.map((recipeData) => (
+                <RecipesList
+                  key={recipeData.idMeal}
+                  name={recipeData.strMeal}
+                  thumbnail={recipeData.strMealThumb}
+                  rating={recipeData.rating}
+                  time={recipeData.time}
+                  level={recipeData.level}
+                  people={recipeData.people}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>

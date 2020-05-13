@@ -16,10 +16,10 @@ function Navbar() {
 
   return (
     <div className={navExpand ? "navbar-expand" : "navbar"}>
-      {!navExpand ? <IoIosMenu className="burger-menu" onClick={toggleNavExpand} /> : <IoMdClose className="burger-menu" onClick={toggleNavExpand} /> }
+      {!navExpand ? <IoIosMenu className="burger-menu" onClick={toggleNavExpand} /> : <IoMdClose className="close-menu" onClick={toggleNavExpand} /> }
       <ul className="navbar-items">
-        <li><Link to="/ingredients">Ingredients</Link></li>
-        <li><Link to="/recipes">Recipes</Link></li>
+        <li onClick={toggleNavExpand}><Link to="/ingredients">Ingredients</Link></li>
+        <li onClick={toggleNavExpand}><Link to="/recipes">Recipes</Link></li>
       </ul>
     </div>
   );
