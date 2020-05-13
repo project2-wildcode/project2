@@ -33,6 +33,9 @@ class Recipe extends Component {
         recipeData.strInstructions = strManipulation(
           recipeData.strInstructions
         );
+        if (recipeData.strTags !== null) {
+          recipeData.strTags = `#${recipeData.strTags.split(",").join(" #")}`;
+        }
         const newInfo = {
           recipeInfoRating: rating,
           perpTime: time,
