@@ -20,7 +20,7 @@ function SearchBar(props) {
 SearchBar.propTypes = {
   input: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
