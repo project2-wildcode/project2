@@ -2,13 +2,16 @@ import React from 'react';
 import HomeOpening from './HomeSubcomponents/HomeOpening';
 import HomeIngredients from './HomeSubcomponents/HomeIngredients';
 import HomeRecipes from './HomeSubcomponents/HomeRecipes';
+import './Home.scss';
 
 function Home() {
   return (
     <div className="home-wrapper">
-      <HomeOpening />
-      <HomeIngredients />
-      <HomeRecipes />
+      <div className="page-wrapper">
+        <HomeOpening />
+        <HomeIngredients />
+        <HomeRecipes />
+      </div>
     </div>
   );
 }
