@@ -9,7 +9,7 @@ function NumRecipes(props) {
         <div className="search-info">
           <p>
             click the cards to add
-            <span>ingredients</span>
+            <span> ingredients</span>
           </p>
         </div>
       );
@@ -27,8 +27,8 @@ function NumRecipes(props) {
       return (
         <div className="search-info">
           <p>
-            <span>{numRecipes}</span>
-            {numRecipes === 1 ? "recipe" : "recipes"}
+            <span>{numRecipes} </span>
+            {numRecipes === 1 ? "recipe " : "recipes "}
             available
           </p>
         </div>

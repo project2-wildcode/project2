@@ -7,7 +7,7 @@
   background-color: $color;
 }
 
-@mixin cards-container{
+@mixin cards-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -31,7 +31,7 @@
   padding-top: 30px;
 }
 
-@mixin card-title{
+@mixin card-title {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -43,32 +43,77 @@
   background-color: white;
 }
 
-@mixin card-p{
+@mixin card-p {
   font-family: Jost-semiBold;
   font-size: 20px;
   text-align: center;
   margin: 0 10px;
 }
 
+@mixin recipe-card {
+  display: flex;
+  height: 200px;
+  width: 90%;
+  background-color: white;
+  margin: 10px auto;
+  border-radius: 20px;
+  box-shadow: 4px 4px 8px $shadow;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin recipe-card-img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 20px 0 0 20px;
+}
+
+@mixin recipe-card-info-container {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+@mixin recipe-card-extra-info {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 20px 0 0 10px;
+}
+
+@mixin recipe-extra-info-wrapper {
+  text-align: center;
+  height: fit-content;
+}
+
+@mixin recipe-extra-info-p {
+  font-size: 18px;
+  font-family: Jost-semiBold;
+  margin-top: 0;
+}
+
 /********* COLORS *********/
 
-$yellow: #F7C233;
-$grey:#d8d8d8;
-$shadow: rgba(0,0,0,0.3);
+$yellow: #f7c233;
+$grey: #d8d8d8;
+$shadow: rgba(0, 0, 0, 0.3);
 
 /********* FONTS *********/
 
-@font-face{
+@font-face {
   font-family: Jost-bold;
-  src: url(./fonts/Jost-Bold.ttf)
+  src: url(./fonts/Jost-Bold.ttf);
 }
 
-@font-face{
+@font-face {
   font-family: Jost-semiBold;
-  src: url(./fonts/Jost-SemiBold.ttf)
+  src: url(./fonts/Jost-SemiBold.ttf);
 }
 
-@font-face{
+@font-face {
   font-family: Jost-regular;
-  src: url(./fonts/Jost-Regular.ttf)
+  src: url(./fonts/Jost-Regular.ttf);
 }

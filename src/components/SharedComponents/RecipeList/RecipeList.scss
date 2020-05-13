@@ -1,1 +1,29 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
+
+.recipes-list-card {
+  @include recipe-card;
+
+  img {
+    @include recipe-card-img;
+  }
+}
+
+.card-info {
+  @include recipe-card-info-container;
+
+  .extra-info {
+    @include recipe-card-extra-info;
+
+    .extra-info-wrapper {
+      @include recipe-extra-info-wrapper;
+
+      .icon {
+        font-size: 25px;
+      }
+
+      p {
+        @include recipe-extra-info-p;
+      }
+    }
+  }
+}
