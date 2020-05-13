@@ -5,6 +5,7 @@ import SearchBar from "../SharedComponents/SearchBar/SearchBar";
 import RecipesList from "../SharedComponents/RecipeList/RecipesList";
 import CategoriesList from "./categoriesList";
 import SortBy from "../SharedComponents/SortBy/SortBy";
+import "./Recipes.scss";
 
 const rating = [1, 2, 3, 4, 5];
 const time = [30, 45, 60, 90];
@@ -208,18 +209,18 @@ class Recipes extends React.Component {
                 </p>
               </div>
             ) : (
-              recipesList.map((recipeData) => (
-                <RecipesList
-                  key={recipeData.idMeal}
-                  name={recipeData.strMeal}
-                  thumbnail={recipeData.strMealThumb}
-                  rating={recipeData.rating}
-                  time={recipeData.time}
-                  level={recipeData.level}
-                  people={recipeData.people}
-                />
-              ))
-            )}
+                recipesList.map((recipeData) => (
+                  <RecipesList
+                    key={recipeData.idMeal}
+                    name={recipeData.strMeal}
+                    thumbnail={recipeData.strMealThumb}
+                    rating={recipeData.rating}
+                    time={recipeData.time}
+                    level={recipeData.level}
+                    people={recipeData.people}
+                  />
+                ))
+              )}
           </div>
         </div>
       </div>
