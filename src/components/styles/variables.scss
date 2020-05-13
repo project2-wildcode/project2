@@ -7,6 +7,8 @@
   background-color: $color;
 }
 
+/* INGREDIENTS/CATEGORIES CARDS MIXINS */
+
 @mixin cards-container {
   display: flex;
   justify-content: center;
@@ -51,6 +53,8 @@
   margin: 0 10px;
 }
 
+/* RECIPE CARDS MIXINS */
+
 @mixin recipe-card {
   display: flex;
   height: 200px;
@@ -93,6 +97,90 @@
   font-size: 18px;
   font-family: Jost-semiBold;
   margin-top: 0;
+}
+
+/* HOME MIXINS */
+
+
+@mixin home-page-container {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;  
+}
+
+@mixin home-left-container{
+  position: relative;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+}
+
+@mixin home-right-container($url){
+  width: 50%;
+  background-image: url($url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin home-page-h1{
+  font-family: Jost-Bold;
+  font-size: 70px;
+  margin: 50px 30px 10px 30px; 
+}
+
+@mixin home-page-p{
+  font-family: Jost-semiBold;
+  font-size: 20px;
+  margin: 0 30px 0 30px; 
+}
+
+@mixin home-go-to-btn{
+  align-self: center;
+  width: fit-content;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid $yellow;
+  transition: all .2s ease-in-out; 
+}
+
+@mixin home-page-go-to-btn-a{
+  font-family: Jost-semiBold;
+  font-size: 16px;
+  text-decoration: none;
+  color: $yellow;
+  padding: 5px 10px;
+}
+
+@mixin next-info {
+  align-self: center;
+  text-align: center;
+  font-family: Jost-semiBold;
+  font-size: 25px;
+  color: $grey;
+  margin: 0 30px 0 30px;
+  padding: 0;
+}
+
+@mixin dot-indicators-display{
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  align-self: center;
+}
+
+@mixin nxt-icon {
+  background-color: $yellow;
+  border-radius: 50%;
+  font-size: 35px;
+  color: white;
+  padding: 5px ;
+  cursor: pointer;
+  box-shadow: $shadow 4px 4px 5px;
 }
 
 /********* COLORS *********/

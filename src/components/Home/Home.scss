@@ -1,1 +1,281 @@
 @import '../styles/variables.scss';
+@import '../styles/breakpoints.scss';
+
+.home-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+#home-opening {
+  @include home-page-container;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1{
+    font-family: Jost-Bold;
+    font-size: 65px;  
+    margin: 30px;
+    @include media('<=desktop-small') {
+      font-size: 55px;
+      margin-left: 30px;
+    }
+    @include media('<=tablet') {
+      align-self: flex-start;
+      font-size: 50px;
+      margin-left: 30px;
+    }
+ 
+    span{
+      color: $yellow
+    }
+  }  
+ 
+  .desktop {
+    font-family: Jost-Bold;
+    font-size: 30px;
+    color: $grey;
+    @include media('<=tablet'){
+      display: none;
+    } 
+  }
+ 
+  .tablet{
+    display: none;
+    @include media('<=tablet'){
+      display: flex;
+      font-family: Jost-Bold;
+      font-size: 30px;
+      color: $grey;
+    } 
+  }
+ 
+  .dot-indicators{
+    display: none;
+    @include media('<=tablet') {
+      display: flex;
+      position: absolute;
+      bottom: 30px;
+    }
+ 
+    .dot{
+      color: $grey;
+    }
+  
+    .active{
+      color: $yellow;
+    }
+  }
+ 
+  .nxt-icon{
+    @include nxt-icon;
+    @include media('<=tablet') {
+      display: none;
+    }
+  }
+}
+
+#home-ingredients{
+  @include home-page-container;
+
+  .home-ingredients-left{
+      @include home-left-container;
+      @include media('<=tablet') {
+        width: 100%;
+      }
+
+      h1{
+          @include home-page-h1;
+          @include media('<=desktop-small'){
+            font-size: 60px;
+          }
+          @include media('<=tablet'){
+            font-size: 65px;
+          } 
+  
+          span{
+            color: $yellow;
+          }
+        }
+
+        p{
+          @include home-page-p;
+          @include media('<=desktop-small'){
+            font-size: 16px;
+          } 
+          @include media('<=tablet'){
+            font-size: 20px;
+          } 
+        }
+
+        .go-to-btn{
+          @include home-go-to-btn;
+
+          &:hover{
+            background-color: $yellow;  
+  
+            a{ color: white; }
+          }  
+  
+            a{ @include home-page-go-to-btn-a;}
+        }
+
+        .next-info{
+            @include next-info;
+            @include media('<=desktop-small'){
+                font-size: 20px;
+              }
+              @include media('<=tablet'){
+                font-size: 25px;
+              }
+    
+              span{
+                display: none;
+                @include media('<=tablet'){
+                  display: block;
+                }
+              }
+        }
+
+        .dot-indicators{
+            display: none;
+            @include media('<=tablet') {
+                @include dot-indicators-display
+            }
+
+            .dot{
+                color: $grey;
+            }
+          
+            .active{
+                color: $yellow;
+            }
+        }
+
+        a{
+            align-self: center;
+
+            .nxt-icon{
+                @include nxt-icon;
+                @include media('<=tablet') {
+                  display: none;
+                }
+            }
+        }
+  }
+
+  .home-ingredients-right{
+    @include home-right-container('../styles/images/ingredientsmockup.jpg');
+    @include media('<=tablet') {
+        display: none;
+      }
+
+  }
+}
+
+#home-recipes{
+  @include home-page-container;
+
+  .home-recipes-left{
+    @include home-left-container;
+    @include media('<=tablet') {
+      width: 100%;
+    }
+
+    h1{
+        @include home-page-h1;
+        @include media('<=desktop-small'){
+            font-size: 60px;
+        }
+        @include media('<=tablet'){
+          font-size: 65px;
+        } 
+  
+        span{
+          color: $yellow;
+        }
+      }
+
+    p{
+      @include home-page-p;
+      @include media('<=desktop-small'){
+        font-size: 16px;
+      } 
+      @include media('<=tablet'){
+        font-size: 20px;
+      } 
+    }
+
+    .go-to-btn{
+      @include home-go-to-btn;
+
+      &:hover{
+        background-color: $yellow;  
+
+        a{ color: white; }
+      }  
+
+        a{
+          font-family: Jost-semiBold;
+          font-size: 16px;
+          text-decoration: none;
+          color: $yellow;
+          padding: 5px 10px;
+        }
+    }
+
+    .next-info{
+        @include next-info;
+        @include media('<=desktop-small'){
+            font-size: 20px;
+          }
+          @include media('<=tablet'){
+            font-size: 25px;
+          }
+
+          span{
+            display: none;
+            @include media('<=tablet'){
+              display: block;
+            }
+          }
+    }
+
+    .dot-indicators{
+        display: none;
+        @include media('<=tablet') {
+            @include dot-indicators-display
+        }
+
+        .dot{
+            color: $grey;
+        }
+      
+        .active{
+            color: $yellow;
+        }
+    }
+
+    a{
+        align-self: center;
+
+        .prev-icon{
+            @include nxt-icon;
+            @include media('<=tablet') {
+              display: none;
+            }
+        }
+    }
+    
+  }
+
+  .home-recipes-right{
+      @include home-right-container('../styles/images/meal.jpg');
+      @include media('<=tablet') {
+        display: none;
+      }
+  }
+}
