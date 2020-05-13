@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MdSearch } from "react-icons/md";
+import "./SearchBar.scss";
 
 function SearchBar(props) {
   const { input, handleChange, placeholder } = props;

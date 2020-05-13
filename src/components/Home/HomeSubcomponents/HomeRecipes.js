@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { GoPrimitiveDot } from 'react-icons/go';
-import '../Home.scss';
+import './HomeRecipes.scss';
 
 
 function HomeRecipes() {
