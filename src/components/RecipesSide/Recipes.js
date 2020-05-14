@@ -205,7 +205,7 @@ class Recipes extends React.Component {
             <div className="search-info">
               <p>
                 <span>{`${recipesList.length} `}</span>
-                recipes avalible
+                recipes available
               </p>
               {isBottomTabExpanded ? <IoIosArrowDown className="toggle-bottom-tab" onClick={this.toggleBottomTab} /> : <IoIosArrowUp className="toggle-bottom-tab" onClick={this.toggleBottomTab} />}
             </div>

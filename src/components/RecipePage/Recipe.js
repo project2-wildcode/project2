@@ -106,7 +106,7 @@ class Recipe extends Component {
             <img src={recipeInfo.strMealThumb} alt={recipeInfo.strMeal} />
             <div className="recipeInfo-info">
               <h2 className="desktop-title">{recipeInfo.strMeal}</h2>
-              <h2 className="phone-title">{displayName}</h2>
+              <h2 className="phone-title" title={recipeInfo.strMeal}>{displayName}</h2>
               <StarRatings
                 rating={recipeInfo.recipeInfoRating}
                 starRatedColor="#f5b131"
