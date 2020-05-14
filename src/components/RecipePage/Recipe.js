@@ -25,7 +25,14 @@ class Recipe extends Component {
   componentDidMount() {
     const { location } = this.props;
     const { state } = location;
-    const { name, rating, time, level, people, from } = state;
+    const {
+      name,
+      rating,
+      time,
+      level,
+      people,
+      from
+    } = state;
     const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${name}`;
     axios
       .get(url)
@@ -56,14 +63,20 @@ class Recipe extends Component {
       const strIngredient = `strIngredient${i}`;
       const strMeasure = `strMeasure${i}`;
       if (
-        recipeInfo[strIngredient] !== "" &&
-        recipeInfo[strIngredient] !== " " &&
-        recipeInfo[strIngredient] !== null
+        recipeInfo[strIngredient] !== ""
+        && (
+          recipeInfo[strIngredient] !== " "
+        ) && (
+          recipeInfo[strIngredient] !== null
+        )
       ) {
         if (
-          recipeInfo[strMeasure] !== "" &&
-          recipeInfo[strMeasure] !== " " &&
-          recipeInfo[strMeasure] !== null
+          recipeInfo[strMeasure] !== ""
+          && (
+            recipeInfo[strMeasure] !== " "
+          ) && (
+            recipeInfo[strMeasure] !== null
+          )
         ) {
           ingredients.push(
             `${recipeInfo[strIngredient]} (${recipeInfo[strMeasure]}) `
@@ -88,7 +101,6 @@ class Recipe extends Component {
     if (displayName !== undefined && displayName.length > 20) {
       displayName = `${displayName.substring(0, 20)}...`;
     }
-    console.log(recipeInfo.strInstructions);
 
     return (
       <div className="page-wrapper">
@@ -152,12 +164,17 @@ class Recipe extends Component {
           </div>
           <div className={isBottomTabExpanded ? "instructions-wrapper-bottom" : "instructions-wrapper-right"}>
             <h2 className="instructions-title">Instructions</h2>
-            {recipeInfo.strInstructions !== undefined &&
+            {recipeInfo.strInstructions !== undefined
+            && (
               recipeInfo.strInstructions.map((instruction, index) => (
                 <p className="instructions">
-                  <span>{index + 1}.</span> {instruction}
+                  <span>
+                    {index + 1}
+                    .
+                  </span>
+                  {` ${instruction}`}
                 </p>
-              ))}
+              )))}
             <h2 className="video-title">Video:</h2>
             <a
               className="video-link"

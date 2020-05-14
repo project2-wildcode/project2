@@ -32,8 +32,7 @@ class Ingredient extends Component {
   }
 
   componentDidMount() {
-    const url =
-      "https://www.themealdb.com/api/json/v2/9973533/list.php?i=ingredient";
+    const url = "https://www.themealdb.com/api/json/v2/9973533/list.php?i=ingredient";
     axios
       .get(url)
       .then((response) => response.data.meals)
@@ -67,9 +66,9 @@ class Ingredient extends Component {
   handleChange = (event) => {
     const { value } = event.target;
     const { allIngredients } = this.state;
-    const filteredIngredients = allIngredients.filter((ingredient) =>
+    const filteredIngredients = allIngredients.filter((ingredient) => (
       ingredient.strIngredient.toLowerCase().includes(value.toLowerCase())
-    );
+    ));
     this.setState({
       searchValue: value,
       ingredientsList: filteredIngredients,
