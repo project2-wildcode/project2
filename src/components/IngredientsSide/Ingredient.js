@@ -23,6 +23,7 @@ class Ingredient extends Component {
     this.state = {
       allIngredients: [],
       ingredientsList: [],
+      isLoaded: false,
       searchValue: "",
       filters: [],
       recipesList: [],
@@ -40,6 +41,7 @@ class Ingredient extends Component {
         this.setState({
           ingredientsList: ingredientsData,
           allIngredients: ingredientsData,
+          isLoaded: true
         });
       });
   }
@@ -162,6 +164,7 @@ class Ingredient extends Component {
   render() {
     const {
       ingredientsList,
+      isLoaded,
       filters,
       searchValue,
       recipesList,
@@ -187,13 +190,14 @@ class Ingredient extends Component {
             ))}
           </div>
           <div className="ingredients-cards-container">
-            {ingredientsList.map((ingredient) => (
+            {ingredientsList.length > 0 ? (ingredientsList.map((ingredient) => (
               <IngredientsList
                 key={ingredient.idIngredient}
                 name={ingredient.strIngredient}
                 addFilter={this.addFilter}
               />
-            ))}
+            ))) : (isLoaded && <p className="no-ingredients">no ingredients match your search</p>
+            )}
           </div>
         </div>
 
