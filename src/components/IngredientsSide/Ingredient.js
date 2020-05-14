@@ -223,6 +223,7 @@ class Ingredient extends Component {
                   level={recipe.level}
                   people={recipe.people}
                   selectRecipe={this.selectRecipe}
+                  isBottomTabExpanded={isBottomTabExpanded}
                 />
               )))}
           </div>

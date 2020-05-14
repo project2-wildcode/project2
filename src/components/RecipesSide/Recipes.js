@@ -235,6 +235,7 @@ class Recipes extends React.Component {
                   level={recipeData.level}
                   people={recipeData.people}
                   selectRecipe={this.selectRecipe}
+                  isBottomTabExpanded={isBottomTabExpanded}
                 />
               ))
             )}

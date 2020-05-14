@@ -17,7 +17,10 @@
           }
           @include media('<=tablet'){
             font-size: 65px;
-          } 
+          }
+          @include media('<=phone'){
+            font-size: 30px;
+          }
     
           span{
             color: $yellow;
@@ -31,11 +34,17 @@
         } 
         @include media('<=tablet'){
           font-size: 20px;
-        } 
+        }
+        @include media('<=phone'){
+          font-size: 14px;
+        }
       }
   
       .go-to-btn{
         @include home-go-to-btn;
+        @include media('<=phone'){
+          font-size: 14px;
+        }
   
         &:hover{
           background-color: $yellow;  
@@ -50,6 +59,10 @@
             }
             @include media('<=tablet'){
               font-size: 25px;
+            }
+            @include media('<=phone'){
+              margin:-20px 30px 0 30px;
+              font-size: 16px;
             }
   
             span{

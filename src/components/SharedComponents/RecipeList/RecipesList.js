@@ -15,10 +15,11 @@ function RecipesList(props) {
     level,
     people,
     thumbnail,
+    isBottomTabExpanded,
   } = props;
   let displayName = name;
-  if (name.length > 30) {
-    displayName = `${name.substring(0, 30)}...`;
+  if (name.length > 20) {
+    displayName = isBottomTabExpanded ? `${name.substring(0, 20)}...` : `${name.substring(0, 30)}...`;
   }
   return (
     <div
@@ -32,7 +33,7 @@ function RecipesList(props) {
           rating={rating}
           starRatedColor="#f5b131"
           numberOfStars={5}
-          starDimension="20px"
+          starDimension={isBottomTabExpanded ? "12px" : "20px"}
         />
         <div className="extra-info">
           <div className="extra-info-wrapper">

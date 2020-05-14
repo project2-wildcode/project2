@@ -83,6 +83,11 @@ class Recipe extends Component {
 
   render() {
     const { recipeInfo, isBottomTabExpanded } = this.state;
+
+    let displayName = recipeInfo.strMeal;
+    if (displayName !== undefined && displayName.length > 20) {
+      displayName = `${displayName.substring(0, 20)}...`;
+    }
     console.log(recipeInfo.strInstructions);
 
     return (
@@ -100,11 +105,12 @@ class Recipe extends Component {
           <div className="recipeInfo-card">
             <img src={recipeInfo.strMealThumb} alt={recipeInfo.strMeal} />
             <div className="recipeInfo-info">
-              <h2>{recipeInfo.strMeal}</h2>
+              <h2 className="desktop-title">{recipeInfo.strMeal}</h2>
+              <h2 className="phone-title">{displayName}</h2>
               <StarRatings
                 rating={recipeInfo.recipeInfoRating}
                 starRatedColor="#f5b131"
-                starDimension="20px"
+                starDimension="14px"
                 numberOfStars={5}
               />
               <div className="extra-info-container">
