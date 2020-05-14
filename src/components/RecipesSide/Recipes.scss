@@ -1,0 +1,140 @@
+@import '../styles/variables.scss';
+@import '../styles/breakpoints.scss';
+
+.page-wrapper {
+    display: flex;
+    position: relative;
+  }
+
+  .recipes-container-left {
+    @include half-page-container(white);
+    text-align: center;
+    @include media('<=tablet'){
+      width: 100%;
+    }
+  }
+
+  .recipes-title {
+    font-family: Jost-Bold;
+    color: $grey;
+    margin-top: 100px;
+  }
+
+.categories-cards-container {
+  @include cards-container;
+  @include media('<=tablet'){
+    margin-bottom: 120px;
+  }
+
+  .categories-card{
+      @include card;
+      @include media('<=phone'){
+        width: 110px;
+        height: 135px;
+      }
+      
+    img {
+      @include card-img;
+      @include media('<=phone'){
+        max-width: 70px;
+        padding-top: 15px;
+      }
+    }
+  
+    .categories-card-title {
+      @include card-title;
+  
+      p {
+        @include card-p;
+        @include media('<=phone'){
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.recipes-container-right {
+  @include half-page-container($yellow);
+  @include media('<=tablet'){
+    @include container-bottom(100px);
+    transition: all .3s ease-in-out;
+
+  }
+}
+
+.recipes-container-bottom{
+  @include half-page-container($yellow);
+  @include media('<=tablet'){
+    @include container-bottom(80%);
+    overflow-y:scroll;
+    transition: all .3s ease-in-out;
+  }
+}
+
+.recipesList-container{
+  width:100%;
+}
+
+.recipesList-container-bottom{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.toggle-bottom-tab{
+  display: none;
+  @include media('<=tablet'){
+    @include expand-close-btn;
+  }
+
+}
+
+.search-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  @include media('<=tablet'){
+    background-color: $yellow;
+    height: 100px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-radius: 20px 20px 0 0;
+  }
+
+  p{
+    width: 80%;
+    font-family: Jost-Bold;
+    font-size: 70px;
+    margin: 100px 0 0 30px;
+    line-height: 1.2em;
+    @include media('<=desktop-small'){
+      font-size: 60px;
+      margin: 100px 20px 10px 30px;
+    }
+    @include media('<=tablet'){
+      font-size: 30px;
+      margin: 10px 0 10px 30px;
+    }
+    @include media('<=phone'){
+      font-size:22px ;
+      margin: 10px 0 10px 15px;
+    }
+
+    span {
+      color: white;
+    }
+  }
+
+  .close{
+    display: none;
+    @include media('<=tablet'){
+      @include expand-close-btn;
+    }
+  }
+}
+
+      
+      

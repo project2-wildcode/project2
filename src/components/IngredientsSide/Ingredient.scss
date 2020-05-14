@@ -1,0 +1,177 @@
+@import "../styles/variables.scss";
+@import "../styles/breakpoints.scss";
+
+.page-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.ingredients-left-container {
+  @include half-page-container(white);
+  text-align: center;
+  @include media('<=tablet'){
+    width: 100%;
+  }
+}
+
+.ingredients-title {
+  font-family: Jost-Bold;
+  color: $grey;
+  margin-top: 100px;
+}
+
+.filters-container {
+  @include cards-container;
+
+  .filters-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: $yellow;
+    width: fit-content;
+    height: 25px;
+    padding: 7px 10px;
+    margin: 30px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 $shadow;
+    @include media('<=phone'){
+      height: 20px;
+    }
+
+    p {
+      font-family: Jost-semiBold;
+      font-size: 18px;
+      margin-right: 5px;
+      color: white;
+      @include media('<=phone'){
+        font-size: 16px;
+      }
+    }
+
+    .remove {
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+.ingredients-cards-container {
+  @include cards-container;
+  @include media('<=phone'){
+    margin-bottom: 120px;
+  }
+
+  .no-ingredients{
+    font-family: Jost-bold;
+    color: $grey;
+    font-size: 40px;
+    margin:auto 30px;
+    @include media('<=tablet'){
+      font-size: 30px;
+    }
+  }
+
+  .ingredients-card {
+    @include card;
+    @include media('<=phone'){
+      width: 110px;
+      height: 135px;
+    }
+
+    img {
+      @include card-img;
+      @include media('<=phone'){
+        max-width: 70px;
+        padding-top: 15px;
+      }
+    }
+
+    .ingredients-card-title {
+      @include card-title;
+
+      p {
+        @include card-p;
+        @include media('<=phone'){
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.ingredients-container-right {
+  @include half-page-container($yellow);
+  transition: all .3s ease-in-out;
+  @include media('<=tablet'){
+    @include container-bottom(100px);
+  }
+}
+
+.ingredients-container-bottom{
+  @include container-bottom(80%);
+  transition: all .3s ease-in-out;
+  overflow-y: scroll;
+}
+
+.recipes-list-container {
+  width: 100%;
+  @include media('<=tablet'){
+    display: none;
+  }
+}
+
+.recipes-list-container-bottom{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.num-of-recipes-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  @include media('<=tablet'){
+    height: 100px;
+    background-color: $yellow;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  p{
+    width: 80%;
+    height: fit-content;
+    font-family: Jost-Bold;
+    font-size: 70px;
+    margin: 100px 0 0 30px;
+    line-height: 1.2em;
+    @include media('<=desktop-small'){
+      font-size: 60px;
+      margin: 100px 20px 10px 30px;
+    }
+    @include media('<=tablet'){
+      font-size: 30px;
+      margin: 10px 0 10px 30px;
+    }
+    @include media('<=phone'){
+      font-size:22px ;
+      margin: 10px 0 10px 15px;
+    }
+  
+
+    span {
+      color: white;
+    }
+  }
+
+  
+}
+
+.toggle-bottom-tab-icon{
+  display: none;
+  @include media('<=tablet'){
+    @include expand-close-btn;
+  }
+}

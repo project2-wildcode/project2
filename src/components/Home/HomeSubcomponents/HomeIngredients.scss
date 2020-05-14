@@ -1,0 +1,111 @@
+@import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
+
+#home-ingredients{
+    @include home-page-container;
+  
+    .home-ingredients-left{
+        @include home-left-container;
+        @include media('<=tablet') {
+          width: 100%;
+        }
+  
+        h1{
+            @include home-page-h1;
+            @include media('<=desktop-small'){
+              font-size: 60px;
+            }
+            @include media('<=tablet'){
+              font-size: 65px;
+            }
+            @include media('<=phone'){
+              font-size: 30px;
+            }
+    
+            span{
+              color: $yellow;
+            }
+          }
+  
+          p{
+            @include home-page-p;
+            @include media('<=desktop-small'){
+              font-size: 16px;
+            } 
+            @include media('<=tablet'){
+              font-size: 20px;
+            } 
+            @include media('<=phone'){
+              font-size: 14px;
+            }
+          }
+  
+          .go-to-btn{
+            @include home-go-to-btn;
+            @include media('<=phone'){
+              font-size: 14px;
+            }
+  
+            &:hover{
+              background-color: $yellow;  
+              color: white;
+            }  
+    
+          }
+  
+          .next-info{
+              @include next-info;
+              @include media('<=desktop-small'){
+                  font-size: 20px;
+                }
+                @include media('<=tablet'){
+                  font-size: 25px;
+                }
+                @include media('<=phone'){
+                  margin:-20px 30px 0 30px;
+                  font-size: 16px;
+                }
+      
+                span{
+                  display: none;
+                  @include media('<=tablet'){
+                    display: block;
+                  }
+                }
+          }
+  
+          .dot-indicators{
+              display: none;
+              @include media('<=tablet') {
+                  @include dot-indicators-display
+              }
+  
+              .dot{
+                  color: $grey;
+              }
+            
+              .active{
+                  color: $yellow;
+              }
+          }
+  
+          a{
+              align-self: center;
+  
+              .nxt-icon{
+                  @include nxt-icon;
+                  @include media('<=tablet') {
+                    display: none;
+                  }
+              }
+          }
+    }
+  
+    .home-ingredients-right{
+      @include home-right-container('../styles/images/ingredientsmockup.jpg');
+      @include media('<=tablet') {
+          display: none;
+        }
+  
+    }
+  }

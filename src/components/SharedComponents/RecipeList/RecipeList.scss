@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+@import "../../styles/breakpoints.scss";
+
+.recipes-list-card {
+  @include recipe-card;
+  @include media('<=phone'){
+    height: 100px;
+  }
+
+  img {
+    @include recipe-card-img(200px);
+    @include media('<=phone'){
+      @include recipe-card-img(100px);
+    }
+  }
+
+  h2{
+    font-family: Jost-bold;
+    margin-left: 10px;
+    @include media('<=phone'){
+      font-size: 14px;
+      margin: 10px 0 0 10px;
+    }
+  }
+
+  .star-ratings{
+    margin-left: 10px;
+    @include media('<=phone'){
+      margin:0 0 0 10px;
+    }
+  }
+}
+
+.card-info {
+  @include recipe-card-info-container;
+  @include media('<=phone'){
+    height: 80px ;
+    padding: 10px 0;
+  }
+
+  .extra-info {
+    @include recipe-card-extra-info;
+    @include media('<=phone'){
+      margin: 10px 0 0 10px;
+    }
+
+    .extra-info-wrapper {
+      @include recipe-extra-info-wrapper;
+
+      .icon {
+        font-size: 25px;
+        @include media('<=phone'){
+          font-size: 12px;
+        }
+      }
+
+      p {
+        @include recipe-extra-info-p;
+        @include media('<=phone'){
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

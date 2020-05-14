@@ -1,0 +1,32 @@
+@import "./components/styles/breakpoints.scss";
+@import "./components/styles/breakpoints.scss"
+;
+a{
+    margin: 0;
+
+    .logo{
+        position: absolute;
+        height: 30px;
+        top: 20px;
+        left: 30px;
+        font-size: 30px;
+        z-index: 10;
+        @include media('<=tablet'){
+            height: 25px;
+            top: 30px;
+        }
+        @include media('<=phone'){
+            height: 20px;
+            top: 35px;
+        }
+    }
+}
+
+.bg{
+    position: absolute;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+    z-index: 5;
+}
