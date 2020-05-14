@@ -110,7 +110,7 @@ class Recipe extends Component {
               <MdArrowBack className="go-back" />
             </Link>
           ) : (
-            <Link to="/recipeInfos">
+            <Link to="/recipes">
               <MdArrowBack className="go-back" />
             </Link>
           )}
