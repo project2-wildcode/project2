@@ -123,7 +123,7 @@ class Recipes extends React.Component {
         time: recipeTime,
         level: recipeLevel,
         people: recipePeople,
-        from: "ingredients",
+        from: "recipes",
       },
     });
   };
