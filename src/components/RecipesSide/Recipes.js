@@ -24,6 +24,7 @@ class Recipes extends React.Component {
       categories: [],
       chosenCategory: "",
       searchValue: "",
+      isBottomTabExpanded: false,
     };
   }
 
@@ -58,6 +59,8 @@ class Recipes extends React.Component {
         this.setState({
           recipesList: sortedList,
           chosenCategory: name,
+          searchValue: '',
+          isBottomTabExpanded: true
         });
       });
   };
@@ -91,6 +94,7 @@ class Recipes extends React.Component {
             this.setState({
               recipesList: sortedList,
               searchValue: value,
+              chosenCategory: ''
             });
           }
         });
@@ -107,7 +111,7 @@ class Recipes extends React.Component {
     recipeRating,
     recipeTime,
     recipeLevel,
-    recipePeople
+    recipePeople,
   ) => {
     const searchValue = name.split(" ").join("_");
     const { history } = this.props;
@@ -141,12 +145,21 @@ class Recipes extends React.Component {
     }
   };
 
+  toggleBottomTab = () => {
+    const { isBottomTabExpanded } = this.state;
+    this.setState({
+      isBottomTabExpanded: !isBottomTabExpanded,
+      chosenCategory: '',
+    });
+  }
+
   render() {
     const {
       categories,
       recipesList,
       searchValue,
-      chosenCategory
+      chosenCategory,
+      isBottomTabExpanded,
     } = this.state;
     return (
       <div className="page-wrapper">
@@ -168,7 +181,7 @@ class Recipes extends React.Component {
             ))}
           </div>
         </div>
-        <div className="recipes-container-right">
+        <div className={isBottomTabExpanded ? "recipes-container-bottom" : "recipes-container-right"}>
           {chosenCategory === "" && searchValue === "" && (
             <div className="search-info">
               <p>
@@ -194,12 +207,16 @@ class Recipes extends React.Component {
                 <span>{`${recipesList.length} `}</span>
                 recipes avalible
               </p>
+              {isBottomTabExpanded ? <IoIosArrowDown className="toggle-bottom-tab" onClick={this.toggleBottomTab} /> : <IoIosArrowUp className="toggle-bottom-tab" onClick={this.toggleBottomTab} />}
             </div>
           )}
           {recipesList.length !== 0 && (
-            <SortBy handleSortByChange={this.handleSortByChange} />
+            <SortBy
+              handleSortByChange={this.handleSortByChange}
+              isBottomTabExpanded={isBottomTabExpanded}
+            />
           )}
-          <div className="recipes-list-container">
+          <div className={isBottomTabExpanded ? "recipesList-container-bottom" : "recipesList-container"}>
             {searchValue !== "" && recipesList.length === 0 ? (
               <div className="search-info">
                 <p>

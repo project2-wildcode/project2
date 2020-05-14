@@ -18,6 +18,7 @@ class Recipe extends Component {
     super(props);
     this.state = {
       recipeInfo: [],
+      isBottomTabExpanded: false,
     };
   }
 
@@ -75,8 +76,13 @@ class Recipe extends Component {
     return ingredients;
   };
 
+  toggleBottomTab = () => {
+    const { isBottomTabExpanded } = this.state;
+    this.setState({ isBottomTabExpanded: !isBottomTabExpanded });
+  }
+
   render() {
-    const { recipeInfo } = this.state;
+    const { recipeInfo, isBottomTabExpanded } = this.state;
     console.log(recipeInfo.strInstructions);
 
     return (
@@ -133,12 +139,12 @@ class Recipe extends Component {
             </div>
           </div>
         </div>
-        <div className="recipeInfo-container-right">
+        <div className={isBottomTabExpanded ? "recipeInfo-container-bottom" : "recipeInfo-container-right"}>
           <div className="instructions-title-wrapper">
             <h2 className="tab-title">Instructions:</h2>
-            {/* bottomTabExpanded ? <IoIosArrowDown className="toggle-icon" onClick={toggleBottomTab} /> : <IoIosArrowUp className="toggle-icon" onClick={toggleBottomTab} /> */}
+            {isBottomTabExpanded ? <IoIosArrowDown className="toggle-icon" onClick={this.toggleBottomTab} /> : <IoIosArrowUp className="toggle-icon" onClick={this.toggleBottomTab} /> }
           </div>
-          <div className="instructions-wrapper-right">
+          <div className={isBottomTabExpanded ? "instructions-wrapper-bottom" : "instructions-wrapper-right"}>
             <h2 className="instructions-title">Instructions</h2>
             {recipeInfo.strInstructions !== undefined &&
               recipeInfo.strInstructions.map((instruction, index) => (

@@ -205,7 +205,10 @@ class Ingredient extends Component {
           />
           {recipesList !== null && recipesList.length > 0
           && (
-          <SortBy handleSortByChange={this.handleSortByChange} />
+          <SortBy
+            handleSortByChange={this.handleSortByChange}
+            isBottomTabExpanded={isBottomTabExpanded}
+          />
           )}
           <div className={isBottomTabExpanded ? "recipes-list-container-bottom" : "recipes-list-container"}>
             {recipesList !== null
