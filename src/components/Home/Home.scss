@@ -2,6 +2,7 @@
 @import '../styles/breakpoints.scss';
 
 .home-wrapper {
+  position: relative;
   display: flex;
   height: 100vh;
   overflow-x: scroll;

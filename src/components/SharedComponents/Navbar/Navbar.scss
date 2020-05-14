@@ -10,12 +10,15 @@
   background-color: white;
   z-index: 6;
   @include media('<=tablet'){
-    @include navbar(0)
+    @include navbar(0);
+
+  .navbar-items li {display: none;}
+
   }
 }
 
 .navbar-expand{
-  @include navbar(70%)
+  @include navbar(70%);
 }
 
 .burger-menu{
