@@ -58,6 +58,7 @@ RecipesList.propTypes = {
   name: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
+  isBottomTabExpanded: PropTypes.bool.isRequired,
   rating: PropTypes.number.isRequired,
   time: PropTypes.number.isRequired,
   people: PropTypes.number.isRequired,

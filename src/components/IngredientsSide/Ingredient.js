@@ -46,13 +46,17 @@ class Ingredient extends Component {
   }
 
   addFilter = (name) => {
-    const { filters } = this.state;
+    const { filters, allIngredients } = this.state;
     const currentFilters = [...filters];
     let updatedFilters = currentFilters;
     if (!currentFilters.includes(name)) {
       updatedFilters = [name, ...currentFilters];
     }
-    this.setState({ filters: updatedFilters });
+    this.setState({
+      filters: updatedFilters,
+      ingredientsList: allIngredients,
+      searchValue: ''
+    });
     this.addRecipes(updatedFilters);
   };
 
